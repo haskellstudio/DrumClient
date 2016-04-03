@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="enNYR3" name="DrumClient" projectType="guiapp" version="1.0.0"
+              bundleIdentifier="com.yourcompany.DrumClient" includeBinaryInAppConfig="1"
+              jucerVersion="4.1.0">
+  <MAINGROUP id="JYCcjQ" name="DrumClient">
+    <GROUP id="{10200265-DB60-C87E-AE4B-4910F085FD9E}" name="Source">
+      <FILE id="kKmzTC" name="MainComponent.cpp" compile="1" resource="0"
+            file="Source/MainComponent.cpp"/>
+      <FILE id="inqh6t" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>
+      <FILE id="nk0GHh" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+    </GROUP>
+  </MAINGROUP>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
+                       isDebug="1" optimisation="1" targetName="DrumClient"/>
+        <CONFIGURATION name="Release" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
+                       isDebug="0" optimisation="3" targetName="DrumClient"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_events" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_graphics" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_video" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_opengl" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../juce-grapefruit-osx/modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+    <XCODE_IPHONE targetFolder="Builds/iOS">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" iosCompatibility="default" isDebug="1" optimisation="1"
+                       targetName="DrumClient"/>
+        <CONFIGURATION name="Release" iosCompatibility="default" isDebug="0" optimisation="3"
+                       targetName="DrumClient"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_events" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_graphics" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_video" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_opengl" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../juce-grapefruit-osx/modules"/>
+      </MODULEPATHS>
+    </XCODE_IPHONE>
+    <LINUX_MAKE targetFolder="Builds/LinuxMakefile">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" libraryPath="/usr/X11R6/lib/" isDebug="1" optimisation="1"
+                       targetName="DrumClient"/>
+        <CONFIGURATION name="Release" libraryPath="/usr/X11R6/lib/" isDebug="0" optimisation="3"
+                       targetName="DrumClient"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_events" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_graphics" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_video" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_opengl" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../juce-grapefruit-osx/modules"/>
+      </MODULEPATHS>
+    </LINUX_MAKE>
+    <ANDROIDSTUDIO androidVersionCode="1" androidActivityClass="com.yourcompany.drumclient.DrumClient"
+                   androidMinimumSDK="10" androidInternetNeeded="1" androidBluetoothNeeded="1"
+                   androidKeyStore="${user.home}/.android/debug.keystore" androidKeyStorePass="android"
+                   androidKeyAlias="androiddebugkey" androidKeyAliasPass="android"
+                   androidCpp11="1" targetFolder="Builds/AndroidStudio">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" androidArchitectures="armeabi armeabi-v7a x86" isDebug="1"
+                       optimisation="1" targetName="DrumClient"/>
+        <CONFIGURATION name="Release" androidArchitectures="armeabi armeabi-v7a x86"
+                       isDebug="0" optimisation="3" targetName="DrumClient"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_events" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_graphics" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_video" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_opengl" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../juce-grapefruit-osx/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../juce-grapefruit-osx/modules"/>
+      </MODULEPATHS>
+    </ANDROIDSTUDIO>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_video" showAllCode="1" useLocalCopy="0"/>
+  </MODULES>
+  <JUCEOPTIONS/>
+</JUCERPROJECT>
