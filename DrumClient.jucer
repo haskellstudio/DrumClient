@@ -4,7 +4,31 @@
               bundleIdentifier="com.yourcompany.DrumClient" includeBinaryInAppConfig="1"
               jucerVersion="4.1.0">
   <MAINGROUP id="JYCcjQ" name="DrumClient">
+    <GROUP id="{0E509322-6EFA-71F2-5072-AB355AB5400D}" name="Assets">
+      <FILE id="fcdifi" name="padImage1.png" compile="0" resource="1" file="../DrumClient&amp;Stuff/padImage1.png"/>
+      <FILE id="tT7Acu" name="padImage2.png" compile="0" resource="1" file="../DrumClient&amp;Stuff/padImage2.png"/>
+      <FILE id="pdHY9Z" name="padImage3.png" compile="0" resource="1" file="../DrumClient&amp;Stuff/padImage3.png"/>
+      <FILE id="ZlT87T" name="padImage4.png" compile="0" resource="1" file="../DrumClient&amp;Stuff/padImage4.png"/>
+      <FILE id="QJJuzr" name="padImage5.png" compile="0" resource="1" file="../DrumClient&amp;Stuff/padImage5.png"/>
+      <FILE id="egx32S" name="padImage6.png" compile="0" resource="1" file="../DrumClient&amp;Stuff/padImage6.png"/>
+      <FILE id="wgLv0X" name="padImage7.png" compile="0" resource="1" file="../DrumClient&amp;Stuff/padImage7.png"/>
+      <FILE id="R8MOL2" name="padImage8.png" compile="0" resource="1" file="../DrumClient&amp;Stuff/padImage8.png"/>
+      <FILE id="de5eGs" name="padImage9.png" compile="0" resource="1" file="../DrumClient&amp;Stuff/padImage9.png"/>
+      <FILE id="T6Extv" name="padImage10.png" compile="0" resource="1" file="../DrumClient&amp;Stuff/padImage10.png"/>
+      <FILE id="TlGop1" name="29.png" compile="0" resource="1" file="../tutorial_main_component/Builds/MacOSX/29.png"/>
+    </GROUP>
     <GROUP id="{10200265-DB60-C87E-AE4B-4910F085FD9E}" name="Source">
+      <FILE id="saYDVm" name="DrumPadComponent.cpp" compile="1" resource="0"
+            file="Source/DrumPadComponent.cpp"/>
+      <FILE id="yCJQ7l" name="DrumPadComponent.h" compile="0" resource="0"
+            file="Source/DrumPadComponent.h"/>
+      <FILE id="kda2ty" name="DrumComponent.cpp" compile="1" resource="0"
+            file="Source/DrumComponent.cpp"/>
+      <FILE id="ZZSVes" name="DrumComponent.h" compile="0" resource="0" file="Source/DrumComponent.h"/>
+      <FILE id="r0kGUN" name="HeaderComponent.cpp" compile="1" resource="0"
+            file="Source/HeaderComponent.cpp"/>
+      <FILE id="zYnvdt" name="HeaderComponent.h" compile="0" resource="0"
+            file="Source/HeaderComponent.h"/>
       <FILE id="kKmzTC" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
       <FILE id="inqh6t" name="MainComponent.h" compile="0" resource="0" file="Source/MainComponent.h"/>

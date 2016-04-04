@@ -49,8 +49,12 @@ ifeq ($(CONFIG),Release)
 endif
 
 OBJECTS := \
+  $(OBJDIR)/DrumPadComponent_6cb82af9.o \
+  $(OBJDIR)/DrumComponent_2021d3d8.o \
+  $(OBJDIR)/HeaderComponent_e863d551.o \
   $(OBJDIR)/MainComponent_a6ffb4a5.o \
   $(OBJDIR)/Main_90ebc5c2.o \
+  $(OBJDIR)/BinaryData_ce4232d4.o \
   $(OBJDIR)/juce_audio_basics_55060530.o \
   $(OBJDIR)/juce_audio_devices_b144cdee.o \
   $(OBJDIR)/juce_audio_formats_dfc6178e.o \
@@ -82,6 +86,21 @@ strip:
 	@echo Stripping DrumClient
 	-@strip --strip-unneeded $(OUTDIR)/$(TARGET)
 
+$(OBJDIR)/DrumPadComponent_6cb82af9.o: ../../Source/DrumPadComponent.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling DrumPadComponent.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/DrumComponent_2021d3d8.o: ../../Source/DrumComponent.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling DrumComponent.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/HeaderComponent_e863d551.o: ../../Source/HeaderComponent.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling HeaderComponent.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
 $(OBJDIR)/MainComponent_a6ffb4a5.o: ../../Source/MainComponent.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling MainComponent.cpp"
@@ -90,6 +109,11 @@ $(OBJDIR)/MainComponent_a6ffb4a5.o: ../../Source/MainComponent.cpp
 $(OBJDIR)/Main_90ebc5c2.o: ../../Source/Main.cpp
 	-@mkdir -p $(OBJDIR)
 	@echo "Compiling Main.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/BinaryData_ce4232d4.o: ../../JuceLibraryCode/BinaryData.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling BinaryData.cpp"
 	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/juce_audio_basics_55060530.o: ../../../juce-grapefruit-osx/modules/juce_audio_basics/juce_audio_basics.cpp

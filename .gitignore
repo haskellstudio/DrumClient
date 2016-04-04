@@ -1,1 +1,13 @@
-UserInterfaceState.xcuserstate
+# Ignore files built by xcode
+*.xccheckout
+*.mode*v*
+*.pbxuser
+*.xcbkptlist
+*.xcworkspacedata
+*.xcuserstate
+*.xccheckout
+xcschememanagement.plist
+.DS_Store
+._.*
+xcuserdata/
+DerivedData/

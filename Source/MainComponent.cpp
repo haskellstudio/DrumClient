@@ -7,30 +7,28 @@
 */
 
 #include "MainComponent.h"
-
+#include "HeaderComponent.h"
+#include "DrumComponent.h"
 
 //==============================================================================
+MainContentComponent::~MainContentComponent(){}
 MainContentComponent::MainContentComponent()
 {
-    setSize (600, 400);
+    Rectangle<int> screenSize = Desktop::getInstance().getDisplays().getMainDisplay().userArea;
+
+    header = new HeaderComponent();
+    drum = new DrumComponent();
+    addAndMakeVisible(header);
+    addAndMakeVisible(drum);
+    
+    setSize (screenSize.getWidth(), screenSize.getHeight());
 }
 
-MainContentComponent::~MainContentComponent()
-{
-}
-
-void MainContentComponent::paint (Graphics& g)
-{
-    g.fillAll (Colour (0xff001F36));
-
-    g.setFont (Font (16.0f));
-    g.setColour (Colours::white);
-    g.drawText ("Hello World!", getLocalBounds(), Justification::centred, true);
-}
 
 void MainContentComponent::resized()
 {
-    // This is called when the MainContentComponent is resized.
-    // If you add any child components, this is where you should
-    // update their positions.
+    float width = getWidth();
+    float height = getHeight();
+    header->setBounds(0, 0, width, height*0.2f);
+    drum->setBounds(width*0.3f, height*0.25f, width*0.7f, height*0.75f);
 }
