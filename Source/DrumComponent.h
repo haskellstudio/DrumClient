@@ -24,7 +24,7 @@ public:
     void resized() override;
 
 private:
-    DrumPadComponent* pad1;
+    std::vector<DrumPadComponent*> pads;
 };
 
 #endif  // DRUMCOMPONENT_H_INCLUDED

@@ -49,6 +49,7 @@ ifeq ($(CONFIG),Release)
 endif
 
 OBJECTS := \
+  $(OBJDIR)/MixerComponent_e3e89c7d.o \
   $(OBJDIR)/DrumPadComponent_6cb82af9.o \
   $(OBJDIR)/DrumComponent_2021d3d8.o \
   $(OBJDIR)/HeaderComponent_e863d551.o \
@@ -85,6 +86,11 @@ clean:
 strip:
 	@echo Stripping DrumClient
 	-@strip --strip-unneeded $(OUTDIR)/$(TARGET)
+
+$(OBJDIR)/MixerComponent_e3e89c7d.o: ../../Source/MixerComponent.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling MixerComponent.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/DrumPadComponent_6cb82af9.o: ../../Source/DrumPadComponent.cpp
 	-@mkdir -p $(OBJDIR)
