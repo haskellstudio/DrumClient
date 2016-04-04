@@ -13,6 +13,8 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
+class MixerPadComponent;
+
 class MixerComponent : public Component
 {
 public:
@@ -21,6 +23,7 @@ public:
     
     void resized() override;
 private:
+    std::vector<MixerPadComponent*> padsMixer;
 };
 
 

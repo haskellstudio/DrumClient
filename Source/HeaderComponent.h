@@ -13,6 +13,8 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
+class HeaderListener;
+
 class HeaderComponent : public Component,
                         public Button::Listener
 {
@@ -21,17 +23,30 @@ public:
     HeaderComponent();
     ~HeaderComponent();
     
-
+    HeaderListener* listener = nullptr;
     
+    void addHeaderListener(HeaderListener* _listener);
     void buttonClicked(Button* button) override;
     void resized() override;
+    
+    enum HeaderButtons {
+        DRUM,
+        MIXER,
+        SETTINGS
+    };
 
 private:
     ImageButton drumButton;
     ImageButton mixerButton;
     ImageButton settingsButton;
     ImageComponent logo;
+};
 
+class HeaderListener
+{
+public:
+    virtual ~HeaderListener()  {}
+    virtual void headerChanged(HeaderComponent::HeaderButtons headerButton) = 0;
 };
 
 #endif  // HEADERCOMPONENT_H_INCLUDED

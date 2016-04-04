@@ -14,9 +14,9 @@
 DrumComponent::~DrumComponent(){}
 DrumComponent::DrumComponent()
 {
-    for (int i = 0; i < 14; ++i) {
+    for (int i = 0; i < 10; ++i) {
         auto pad = new DrumPadComponent((i % 10) + 1);
-        pads.push_back(pad);
+        padsDrum.push_back(pad);
         addAndMakeVisible(pad);
         
     }
@@ -24,13 +24,15 @@ DrumComponent::DrumComponent()
 
 void DrumComponent::resized()
 {
-    float i = 0.0f;
-    float j = 0.0f;
-    for (auto pad : pads) {
-        pad->setBounds(getWidth()*(0.1f + i), getHeight()*(0.1f + j), getWidth()*0.1f, getWidth()*0.1f);
-        i += 0.15f;
-        if (i > 0.7f) {
-            j += 0.15f;
+    int i = 0;
+    int j = 0;
+    int padsNumberPerLine = 5;
+    float padWidth = getWidth()/(padsNumberPerLine*1.5f + 0.5f);
+    for (auto pad : padsDrum) {
+        pad->setBounds(padWidth*(1.5f*i + 0.5f), padWidth*(0.6f + j)*2.0f, padWidth, padWidth);
+        ++i;
+        if (i > 4) {
+            ++j;
             i = 0;
         }
     }

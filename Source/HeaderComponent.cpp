@@ -32,6 +32,11 @@ HeaderComponent::HeaderComponent()
     addAndMakeVisible(logo);
 }
 
+void HeaderComponent::addHeaderListener(HeaderListener* _listener)
+{
+    listener = _listener;
+}
+
 void HeaderComponent::resized()
 {
     Rectangle<int> bounds = getLocalBounds();
@@ -46,11 +51,13 @@ void HeaderComponent::resized()
 
 void HeaderComponent::buttonClicked(juce::Button *button)
 {
-    if (button == &drumButton) {
-        Logger::writeToLog("yeah");
-    } else if (button == &mixerButton) {
-        Logger::writeToLog("yeah");
-    } else if (button == &settingsButton) {
-        Logger::writeToLog("yeah");
+    if (listener) {
+        if (button == &drumButton) {
+            listener->headerChanged(HeaderButtons::DRUM);
+        } else if (button == &mixerButton) {
+            listener->headerChanged(HeaderButtons::MIXER);
+        } else if (button == &settingsButton) {
+            listener->headerChanged(HeaderButtons::SETTINGS);
+        }
     }
 }
