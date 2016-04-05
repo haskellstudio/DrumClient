@@ -14,15 +14,20 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 
 class DrumPadComponent;
+class MixerComponent;
 
 class DrumComponent : public Component
 {
 public:
-    DrumComponent();
+    DrumComponent(MixerComponent* _mixer);
     ~DrumComponent();
     
+    MixerComponent* mixer;
+    
     void resized() override;
-
+    int addPad(int sampleId); /// return padId
+    
+    void playSound(int padId);
 private:
     std::vector<DrumPadComponent*> padsDrum;
 };

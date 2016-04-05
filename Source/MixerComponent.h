@@ -14,14 +14,23 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 
 class MixerPadComponent;
+class AudioEngineGuiInterface;
 
 class MixerComponent : public Component
 {
 public:
-    MixerComponent();
+    MixerComponent(AudioEngineGuiInterface* _audioEngine);
     ~MixerComponent();
+
+    AudioEngineGuiInterface* audioEngine;
     
+    float getVolumeForPad(int padId);
     void resized() override;
+    void addPad(int padId, int sampleId); /// return padId
+    MixerPadComponent* getPadById(int padId);
+    void playSample(int padId);
+    void playSample(int sampleId, float volume);
+    
 private:
     std::vector<MixerPadComponent*> padsMixer;
 };

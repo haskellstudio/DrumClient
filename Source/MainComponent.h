@@ -17,6 +17,8 @@
     This component lives inside our window, and this is where you should put all
     your controls and content.
 */
+
+class AudioEngineGuiInterface;
 class DrumComponent;
 class MixerComponent;
 
@@ -27,19 +29,20 @@ public:
     //==============================================================================
     MainContentComponent();
     ~MainContentComponent();
-
-    
     void resized() override;
     void headerChanged(HeaderComponent::HeaderButtons headerButton) override;
-
+    
 
 private:
     HeaderComponent* header;
     DrumComponent* drum;
     MixerComponent* mixer;
+    AudioEngineGuiInterface* audioEngine;
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainContentComponent)
 };
+
+
 
 
 #endif  // MAINCOMPONENT_H_INCLUDED

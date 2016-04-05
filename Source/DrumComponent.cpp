@@ -10,15 +10,17 @@
 
 #include "DrumComponent.h"
 #include "DrumPadComponent.h"
+#include "AudioEngineGuiInterface.h"
+#include "MixerComponent.h"
+
+#define         kMaxNumberOfPads     10
 
 DrumComponent::~DrumComponent(){}
-DrumComponent::DrumComponent()
+DrumComponent::DrumComponent(MixerComponent* _mixer)
 {
-    for (int i = 0; i < 10; ++i) {
-        auto pad = new DrumPadComponent((i % 10) + 1);
-        padsDrum.push_back(pad);
-        addAndMakeVisible(pad);
-        
+    mixer = _mixer;
+    for (int i = 0; i < kMaxNumberOfPads; ++i) {
+        addPad((i % 10) + 1);
     }
 }
 
@@ -36,4 +38,18 @@ void DrumComponent::resized()
             i = 0;
         }
     }
+}
+
+int DrumComponent::addPad(int sampleId)
+{
+    int drumSize = (int)padsDrum.size();
+    if (drumSize < kMaxNumberOfPads) {
+        int padId = drumSize + 1;
+        int sampleId = (drumSize % 10) + 1;
+        auto pad = new DrumPadComponent(padId, sampleId, mixer);
+        padsDrum.push_back(pad);
+        addAndMakeVisible(pad);
+        mixer->addPad(padId, sampleId);
+    }
+    return drumSize;
 }

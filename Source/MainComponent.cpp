@@ -10,17 +10,19 @@
 #include "HeaderComponent.h"
 #include "DrumComponent.h"
 #include "MixerComponent.h"
+#include "FakeAudioEngine.h"
 
 //==============================================================================
 MainContentComponent::~MainContentComponent(){}
 MainContentComponent::MainContentComponent()
 {
+    audioEngine = new FakeAudioEngine();
     Rectangle<int> screenSize = Desktop::getInstance().getDisplays().getMainDisplay().userArea;
 
     header = new HeaderComponent();
     header->addHeaderListener(this);
-    drum = new DrumComponent();
-    mixer = new MixerComponent();
+    mixer = new MixerComponent(audioEngine);
+    drum = new DrumComponent(mixer);
     addAndMakeVisible(header);
     addAndMakeVisible(drum);
     addChildComponent(mixer);
@@ -47,3 +49,5 @@ void MainContentComponent::headerChanged(HeaderComponent::HeaderButtons headerBu
     mixer->setVisible(HeaderComponent::HeaderButtons::MIXER == headerButton);
 //    settings->setVisible(HeaderComponent::HeaderButtons::SETTINGS == headerButton);
 }
+
+

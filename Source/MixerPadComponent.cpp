@@ -9,22 +9,21 @@
 */
 
 #include "MixerPadComponent.h"
+#include "MixerComponent.h"
+
+void MixerPadComponent::sliderValueChanged (Slider* slider) {}
 
 MixerPadComponent::~MixerPadComponent(){}
-MixerPadComponent::MixerPadComponent()
+MixerPadComponent::MixerPadComponent(int _padId, int _sampleId, MixerComponent* _mixer)
 {
+    mixer = _mixer;
+    padId = _padId;
+    sampleId = _sampleId;
     addAndMakeVisible (volumeSlider);
     volumeSlider.setRange (0.0, 100.0);
     volumeSlider.addListener (this);
     volumeSlider.setSliderStyle(Slider::SliderStyle::LinearVertical);
     volumeSlider.setTextBoxStyle(Slider::NoTextBox, true, 0, 0);
-
-}
-void MixerPadComponent::sliderValueChanged (Slider* slider)
-{
-    if (slider == &volumeSlider) {
-        Logger::writeToLog("SliderValue:" + String(slider->getValue()));
-    }
 }
 
 void MixerPadComponent::resized()
@@ -33,5 +32,6 @@ void MixerPadComponent::resized()
 }
 void MixerPadComponent::buttonClicked(Button* button)
 {
-    
+    //// if è il pulsante giusto
+    mixer->playSample(sampleId, getVolume());
 }

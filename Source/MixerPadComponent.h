@@ -13,20 +13,29 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
+class MixerComponent;
+
 class MixerPadComponent : public Component,
                           public Slider::Listener,
                           public Button::Listener
 {
 public:
-    MixerPadComponent();
+    MixerPadComponent(int _padId, int _sampleId, MixerComponent* _mixer);
     ~MixerPadComponent();
     
     void resized() override;
     void buttonClicked(Button* button) override;
     void sliderValueChanged (Slider* slider) override;
 
+    float getVolume() {return volumeSlider.getValue();};
+    int getPadId() {return padId;};
+    int getSampleId() {return sampleId;};
+
 private:
     Slider volumeSlider;
+    MixerComponent* mixer;
+    int padId;
+    int sampleId;
 };
 
 

@@ -13,22 +13,25 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
+class MixerComponent;
+
 class DrumPadComponent : public Component,
                          public Button::Listener
 {
 public:
 
-    DrumPadComponent(int _padId);
+    DrumPadComponent(int _padId, int _sampleId, MixerComponent* _mixer);
     ~DrumPadComponent();
     
-    static inline Image getImageByDrumPadId(int padId);
     void resized() override;
     void buttonClicked(Button* button) override;
+    void buttonStateChanged (Button*) override;
 
 private:
     int padId;
+    int sampleId;
     ImageButton padButton;
-
+    MixerComponent* mixer;
     
 };
 
