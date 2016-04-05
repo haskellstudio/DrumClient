@@ -49,6 +49,7 @@ ifeq ($(CONFIG),Release)
 endif
 
 OBJECTS := \
+  $(OBJDIR)/TablePadType_ce4103c8.o \
   $(OBJDIR)/SampleInfo_93f88301.o \
   $(OBJDIR)/FakeAudioEngine_5f40be04.o \
   $(OBJDIR)/MixerPadComponent_26676434.o \
@@ -89,6 +90,11 @@ clean:
 strip:
 	@echo Stripping DrumClient
 	-@strip --strip-unneeded $(OUTDIR)/$(TARGET)
+
+$(OBJDIR)/TablePadType_ce4103c8.o: ../../Source/TablePadType.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling TablePadType.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/SampleInfo_93f88301.o: ../../Source/SampleInfo.cpp
 	-@mkdir -p $(OBJDIR)

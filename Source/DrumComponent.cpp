@@ -40,6 +40,20 @@ void DrumComponent::resized()
     }
 }
 
+void DrumComponent::changeSampleToPadId(int sampleId, int padId)
+{
+    if (DrumPadComponent* pad = getPadByPadId(padId))
+        pad->setSample(sampleId);
+}
+DrumPadComponent* DrumComponent::getPadByPadId(int padId)
+{
+    for (auto pad : padsDrum)
+        if (padId == pad->getPadId())
+            return pad;
+    
+    return nullptr;
+}
+
 int DrumComponent::addPad(int sampleId)
 {
     int drumSize = (int)padsDrum.size();

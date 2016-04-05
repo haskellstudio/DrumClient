@@ -11,11 +11,14 @@
 #include "DrumComponent.h"
 #include "MixerComponent.h"
 #include "FakeAudioEngine.h"
+#include "TablePadType.h"
+#include "SampleInfo.h"
 
 //==============================================================================
 MainContentComponent::~MainContentComponent(){}
 MainContentComponent::MainContentComponent()
 {
+    SampleInfo::getInstance();
     audioEngine = new FakeAudioEngine();
     Rectangle<int> screenSize = Desktop::getInstance().getDisplays().getMainDisplay().userArea;
 
@@ -28,6 +31,9 @@ MainContentComponent::MainContentComponent()
     addChildComponent(mixer);
     mixer->setVisible(false);
     
+    tableTypes = new TablePadType(mixer, screenSize.getWidth()*0.125f);
+    addAndMakeVisible(tableTypes);
+    
     setSize (screenSize.getWidth(), screenSize.getHeight());
 }
 
@@ -36,11 +42,12 @@ void MainContentComponent::resized()
 {
     float width = getWidth();
     float height = getHeight();
-    Rectangle<int> focusArea(width*0.25f, height*0.25f, width*0.7f, height*0.75f);
-    header->setBounds(0, 0, width, height*0.2f);
+    float tableTypesWidth = width*0.125f;
+    Rectangle<int> focusArea(tableTypesWidth, height*0.14f, width - tableTypesWidth, height*0.86f);
+    header->setBounds(0, 0, width, height*0.14f);
     drum->setBounds(focusArea);
     mixer->setBounds(focusArea);
-    
+    tableTypes->setBounds(0, focusArea.getY(), tableTypesWidth, focusArea.getHeight());
 }
 
 void MainContentComponent::headerChanged(HeaderComponent::HeaderButtons headerButton)

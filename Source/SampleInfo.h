@@ -30,7 +30,8 @@ public:
     String getNameForSampleId(int sampleId);
     sampleInfoS getInfoForSampleId(int sampleId);
     static SampleInfo* getInstance();
-    inline Image getImageBySampleId(int sampleId);
+    Image getImageBySampleId(int sampleId);
+    int getNumberOfSamples() {return (int)samples.size();};
 
 private:
     map<int, sampleInfoS> samples;

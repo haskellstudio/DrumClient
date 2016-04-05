@@ -26,12 +26,14 @@ public:
     void resized() override;
     void buttonClicked(Button* button) override;
     void buttonStateChanged (Button*) override;
-
+    int getPadId() {return padId;};
+    void setSample(int _sampleId);
 private:
-    int padId;
-    int sampleId;
+    int padId = 0;
+    int sampleId = 0;
     ImageButton padButton;
     MixerComponent* mixer;
+    Label* sampleLabel;
     
 };
 

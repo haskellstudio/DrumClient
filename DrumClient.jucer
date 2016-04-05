@@ -18,6 +18,9 @@
       <FILE id="TlGop1" name="29.png" compile="0" resource="1" file="../tutorial_main_component/Builds/MacOSX/29.png"/>
     </GROUP>
     <GROUP id="{10200265-DB60-C87E-AE4B-4910F085FD9E}" name="Source">
+      <FILE id="b7ekfe" name="TablePadType.cpp" compile="1" resource="0"
+            file="Source/TablePadType.cpp"/>
+      <FILE id="slCriI" name="TablePadType.h" compile="0" resource="0" file="Source/TablePadType.h"/>
       <FILE id="GuCz8F" name="SampleInfo.cpp" compile="1" resource="0" file="Source/SampleInfo.cpp"/>
       <FILE id="FNr9XE" name="SampleInfo.h" compile="0" resource="0" file="Source/SampleInfo.h"/>
       <FILE id="KeT3xo" name="FakeAudioEngine.cpp" compile="1" resource="0"

@@ -21,6 +21,7 @@
 class AudioEngineGuiInterface;
 class DrumComponent;
 class MixerComponent;
+class TablePadType;
 
 class MainContentComponent   : public Component,
                                public HeaderListener
@@ -37,6 +38,7 @@ private:
     HeaderComponent* header;
     DrumComponent* drum;
     MixerComponent* mixer;
+    TablePadType* tableTypes;
     AudioEngineGuiInterface* audioEngine;
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainContentComponent)

@@ -23,11 +23,12 @@ public:
     ~DrumComponent();
     
     MixerComponent* mixer;
-    
     void resized() override;
     int addPad(int sampleId); /// return padId
-    
+    DrumPadComponent* getPadByPadId(int padId);
+    void changeSampleToPadId(int sampleId, int padId);
     void playSound(int padId);
+    
 private:
     std::vector<DrumPadComponent*> padsDrum;
 };
