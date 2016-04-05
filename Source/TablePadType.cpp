@@ -29,6 +29,7 @@ int TablePadType::getNumRows()
 
 Component* TablePadType::refreshComponentForRow(int rowNumber, bool isRowSelected, juce::Component *existingComponentToUpdate)
 {
+    delete existingComponentToUpdate;
     auto cell = new DrumPadComponent(0, rowNumber + 1, mixer);
     cell->setBounds(0, 0, getWidth(), getWidth());
     return cell;

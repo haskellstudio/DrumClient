@@ -22,7 +22,7 @@ SampleInfo::SampleInfo()
         int sampleId = i + 1;
         info.name = SampleInfo::getFakeNameForSample(sampleId);
         info.image = getImageBySampleId(sampleId);
-        samples.insert(make_pair(i, info));
+        samples.insert(make_pair(sampleId, info));
     }
 }
 

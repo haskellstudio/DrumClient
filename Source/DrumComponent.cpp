@@ -20,7 +20,7 @@ DrumComponent::DrumComponent(MixerComponent* _mixer)
 {
     mixer = _mixer;
     for (int i = 0; i < kMaxNumberOfPads; ++i) {
-        addPad((i % 10) + 1);
+        addPad(i + 1);
     }
 }
 
@@ -59,7 +59,6 @@ int DrumComponent::addPad(int sampleId)
     int drumSize = (int)padsDrum.size();
     if (drumSize < kMaxNumberOfPads) {
         int padId = drumSize + 1;
-        int sampleId = (drumSize % 10) + 1;
         auto pad = new DrumPadComponent(padId, sampleId, mixer);
         padsDrum.push_back(pad);
         addAndMakeVisible(pad);
