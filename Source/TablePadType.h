@@ -33,7 +33,6 @@ public:
     void drumPadWasTouchedDown(DrumPadComponent* sender) override;
     void buttonClicked(Button*) override;
     
-    
 private:
     MixerComponent* mixer;
     bool isShowingCategories = true;

@@ -22,17 +22,22 @@ public:
     DrumComponent(MixerComponent* _mixer);
     ~DrumComponent();
     
-    MixerComponent* mixer;
+
+    /// Component Overrides
     void resized() override;
+//    bool hitTest (int x, int y) override;
     void paint (Graphics& g) override;
 
+    
     int addPad(int sampleId); /// return padId
     DrumPadComponent* getPadByPadId(int padId);
     void changeSampleToPadId(int sampleId, int padId);
     void playSound(int padId);
-    
+
+
 private:
     std::vector<DrumPadComponent*> padsDrum;
+    MixerComponent* mixer;
 };
 
 #endif  // DRUMCOMPONENT_H_INCLUDED

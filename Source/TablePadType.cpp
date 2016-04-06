@@ -41,6 +41,8 @@ void TablePadType::drumPadWasClicked(DrumPadComponent* sender)
     }
 }
 
+
+
 void TablePadType::buttonClicked(Button* button)
 {
     if (button == tableHeaderButton && ! isShowingCategories) {
@@ -64,12 +66,14 @@ int TablePadType::getNumRows()
 Component* TablePadType::refreshComponentForRow(int rowNumber, bool isRowSelected, juce::Component *existingComponentToUpdate)
 {
     //////    FARE DYNAMIC CASTING SU "existingComponentToUpdate" PER RICICLARE LE CELLE
-    delete existingComponentToUpdate;
+    if (existingComponentToUpdate && !((DrumPadComponent*)existingComponentToUpdate)->isBeingDragged()) {
+        delete existingComponentToUpdate;
+    }
     DrumPadComponent* cell;
     if (isShowingCategories) {
-        cell = new DrumPadComponent(SampleInfo::getInstance()->getInfoForCategory(PadType(rowNumber + 1)));
+        cell = new DrumPadComponent(SampleInfo::getInstance()->getInfoForCategory(PadType(rowNumber + 1)), false);
     } else {
-        cell = new DrumPadComponent(0, subCategory[rowNumber].sampleId, mixer);
+        cell = new DrumPadComponent(0, subCategory[rowNumber].sampleId, mixer, true);
     }
     cell->addListener(this);
     return cell;
