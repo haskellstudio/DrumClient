@@ -26,7 +26,9 @@ public:
     
     float getVolumeForPad(int padId);
     void resized() override;
-    void addPad(int padId, int sampleId); /// return padId
+    void paint(juce::Graphics &g) override;
+    void addPad(int _padId, int _sampleId); /// return padId
+    void setSampleToPad(int _sampleId, int _padId);
     MixerPadComponent* getPadById(int padId);
     void playSample(int padId);
     void playSample(int sampleId, float volume);

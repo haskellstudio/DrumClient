@@ -9,44 +9,35 @@
 
 namespace BinaryData
 {
-    extern const char*   padImage1_png;
-    const int            padImage1_pngSize = 4362;
+    extern const char*   drumHiHat_png;
+    const int            drumHiHat_pngSize = 1812;
 
-    extern const char*   padImage2_png;
-    const int            padImage2_pngSize = 5716;
+    extern const char*   drumSnare_png;
+    const int            drumSnare_pngSize = 10894;
 
-    extern const char*   padImage3_png;
-    const int            padImage3_pngSize = 5136;
+    extern const char*   drumTom_png;
+    const int            drumTom_pngSize = 1844;
 
-    extern const char*   padImage4_png;
-    const int            padImage4_pngSize = 5423;
+    extern const char*   headerDrum_png;
+    const int            headerDrum_pngSize = 39364;
 
-    extern const char*   padImage5_png;
-    const int            padImage5_pngSize = 5785;
+    extern const char*   headerLogo_png;
+    const int            headerLogo_pngSize = 2109;
 
-    extern const char*   padImage6_png;
-    const int            padImage6_pngSize = 6005;
+    extern const char*   headerMixer_png;
+    const int            headerMixer_pngSize = 4623;
 
-    extern const char*   padImage7_png;
-    const int            padImage7_pngSize = 5475;
+    extern const char*   headerSettings_png;
+    const int            headerSettings_pngSize = 18736;
 
-    extern const char*   padImage8_png;
-    const int            padImage8_pngSize = 6169;
-
-    extern const char*   padImage9_png;
-    const int            padImage9_pngSize = 6047;
-
-    extern const char*   padImage10_png;
-    const int            padImage10_pngSize = 6076;
-
-    extern const char*   _29_png;
-    const int            _29_pngSize = 1509;
+    extern const char*   playMixer_png;
+    const int            playMixer_pngSize = 37691;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];
 
     // Number of elements in the namedResourceList array.
-    const int namedResourceListSize = 11;
+    const int namedResourceListSize = 8;
 
     // If you provide the name of one of the binary resource variables above, this function will
     // return the corresponding data and its size (or a null pointer if the name isn't found).

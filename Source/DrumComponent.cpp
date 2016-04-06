@@ -20,18 +20,23 @@ DrumComponent::DrumComponent(MixerComponent* _mixer)
 {
     mixer = _mixer;
     for (int i = 0; i < kMaxNumberOfPads; ++i) {
-        addPad(i + 1);
+        addPad(3*(i + 1));
     }
+}
+
+void DrumComponent::paint(juce::Graphics &g)
+{
+    g.fillAll(Colours::grey);
 }
 
 void DrumComponent::resized()
 {
     int i = 0;
     int j = 0;
-    int padsNumberPerLine = 5;
-    float padWidth = getWidth()/(padsNumberPerLine*1.5f + 0.5f);
+    int padsNumberPerLine = kMaxNumberOfPads/2;
+    float padWidth = getWidth()/((padsNumberPerLine + 1)*1.5f + 0.5f);
     for (auto pad : padsDrum) {
-        pad->setBounds(padWidth*(1.5f*i + 0.5f), padWidth*(0.6f + j)*2.0f, padWidth, padWidth);
+        pad->setBounds(padWidth*(1.5f*(i + 0.5f) + 0.5f), getHeight()*0.46f + padWidth*(1.0f - 2.0f*float(1 - j)), padWidth, padWidth*1.4f);
         ++i;
         if (i > 4) {
             ++j;
@@ -42,8 +47,10 @@ void DrumComponent::resized()
 
 void DrumComponent::changeSampleToPadId(int sampleId, int padId)
 {
-    if (DrumPadComponent* pad = getPadByPadId(padId))
+    if (DrumPadComponent* pad = getPadByPadId(padId)) {
         pad->setSample(sampleId);
+        mixer->setSampleToPad(sampleId, padId);
+    }
 }
 DrumPadComponent* DrumComponent::getPadByPadId(int padId)
 {

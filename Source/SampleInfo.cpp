@@ -10,6 +10,8 @@
 
 #include "SampleInfo.h"
 
+#define     kSampleNumber       (30)
+
 using namespace std;
 
 static SampleInfo* sharedInstance;
@@ -17,21 +19,57 @@ static SampleInfo* sharedInstance;
 SampleInfo::~SampleInfo(){}
 SampleInfo::SampleInfo()
 {
-    for (int i = 0; i < 20; ++i) {
+    for (int i = 0; i < kSampleNumber; ++i) {
         sampleInfoS info;
         int sampleId = i + 1;
-        info.name = SampleInfo::getFakeNameForSample(sampleId);
-        info.image = getImageBySampleId(sampleId);
+        info.sampleId = sampleId;
+        info.type = getFakeTypeForSample(sampleId);
+        info.name = getFakeNameForSample(sampleId);
+        info.image = getImageByCategory(info.type);
         samples.insert(make_pair(sampleId, info));
+    }
+    for (int i = 0; i < kNumberOfCategories; ++i) {
+        sampleInfoS info;
+        int sampleId = i + 1;
+        info.sampleId = 0;
+        info.type = PadType(i + 1);
+        info.name = getNameForCategory(info.type);
+        info.image = getImageByCategory(info.type);
+        categories.insert(make_pair(sampleId, info));
     }
 }
 
 SampleInfo* SampleInfo::getInstance()
 {
-    if (! sharedInstance) {
+    if (! sharedInstance)
         sharedInstance = new SampleInfo();
-    }
+
     return sharedInstance;
+}
+
+sampleInfoS SampleInfo::getInfoForCategory(PadType categoryType)
+{
+    for (auto pair : categories)
+        if (pair.second.type == categoryType)
+            return pair.second;
+    
+    return sampleInfoS();
+}
+
+PadType SampleInfo::getCategoryOfSample(int sampleId)
+{
+    return getInfoForSampleId(sampleId).type;
+}
+
+vector<sampleInfoS> SampleInfo::getAllSamplesWithCategory(PadType typeCategory)
+{
+    vector<sampleInfoS> selection;
+
+    for (auto pair : samples)
+        if (pair.second.type == typeCategory)
+            selection.push_back(pair.second);
+    
+    return selection;
 }
 
 sampleInfoS SampleInfo::getInfoForSampleId(int sampleId)
@@ -50,42 +88,51 @@ String SampleInfo::getNameForSampleId(int sampleId)
 
 String SampleInfo::getFakeNameForSample(int sampleId)
 {
-    String name;
-    if (sampleId < 6) {
-        name = "Snare";
-    } else if (sampleId < 11) {
-        name = "Kick";
-    } else if (sampleId < 16) {
-        name = "Tom";
-    } else if (sampleId < 21) {
-        name = "Hi Hat";
+    return getNameForCategory(getFakeTypeForSample(sampleId)) + "\n" + String(sampleId);
+}
+
+PadType SampleInfo::getFakeTypeForSample(int sampleId)
+{
+    if (sampleId < kSampleNumber*0.35f) {
+        return Snare;
+    } else if (sampleId < kSampleNumber*0.7f) {
+        return Tom;
+    } else {
+        return HiHat;
     }
-    return name + String(sampleId % 5);
 }
 
 Image SampleInfo::getImageBySampleId(int sampleId)
 {
-    switch (sampleId % 10) {
-        case 1:
-            return ImageCache::getFromMemory (BinaryData::padImage1_png, BinaryData::padImage1_pngSize);
-        case 2:
-            return ImageCache::getFromMemory (BinaryData::padImage2_png, BinaryData::padImage2_pngSize);
-        case 3:
-            return ImageCache::getFromMemory (BinaryData::padImage3_png, BinaryData::padImage3_pngSize);
-        case 4:
-            return ImageCache::getFromMemory (BinaryData::padImage4_png, BinaryData::padImage4_pngSize);
-        case 5:
-            return ImageCache::getFromMemory (BinaryData::padImage5_png, BinaryData::padImage5_pngSize);
-        case 6:
-            return ImageCache::getFromMemory (BinaryData::padImage6_png, BinaryData::padImage6_pngSize);
-        case 7:
-            return ImageCache::getFromMemory (BinaryData::padImage7_png, BinaryData::padImage7_pngSize);
-        case 8:
-            return ImageCache::getFromMemory (BinaryData::padImage8_png, BinaryData::padImage8_pngSize);
-        case 9:
-            return ImageCache::getFromMemory (BinaryData::padImage9_png, BinaryData::padImage9_pngSize);
+    return getImageByCategory(getInfoForSampleId(sampleId).type);
+}
+
+Image SampleInfo::getImageByCategory(PadType type)
+{
+    switch (type) {
+        case HiHat:
+            return ImageCache::getFromMemory (BinaryData::drumHiHat_png, BinaryData::drumHiHat_pngSize);
+        case Snare:
+            return ImageCache::getFromMemory (BinaryData::drumSnare_png, BinaryData::drumSnare_pngSize);
+        case Tom:
+            return ImageCache::getFromMemory (BinaryData::drumTom_png, BinaryData::drumTom_pngSize);
         default:
-            return ImageCache::getFromMemory (BinaryData::padImage10_png, BinaryData::padImage10_pngSize);
+            return ImageCache::getFromMemory (BinaryData::drumSnare_png, BinaryData::drumSnare_pngSize);
     }
 }
+
+String SampleInfo::getNameForCategory(PadType type)
+{
+    switch (type) {
+        case Snare:
+            return "Snare";
+        case Tom:
+            return "Tom";
+        case HiHat:
+            return "HiHat";
+        default:
+            return "";
+    }
+}
+
 

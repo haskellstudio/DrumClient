@@ -24,15 +24,19 @@ public:
     ~MixerPadComponent();
     
     void resized() override;
-    void buttonClicked(Button* button) override;
+    void buttonClicked(Button*) override {};
+    void buttonStateChanged (Button*) override;
     void sliderValueChanged (Slider* slider) override;
 
     float getVolume() {return volumeSlider.getValue();};
     int getPadId() {return padId;};
     int getSampleId() {return sampleId;};
+    void setSample(int _sampleId);
 
 private:
     Slider volumeSlider;
+    ImageButton playButton;
+    Label sampleLabel;
     MixerComponent* mixer;
     int padId;
     int sampleId;

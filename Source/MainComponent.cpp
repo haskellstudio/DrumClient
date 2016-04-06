@@ -43,7 +43,7 @@ void MainContentComponent::resized()
     float width = getWidth();
     float height = getHeight();
     float tableTypesWidth = width*0.125f;
-    Rectangle<int> focusArea(tableTypesWidth, height*0.14f, width - tableTypesWidth, height*0.86f);
+    Rectangle<int> focusArea(tableTypesWidth, height*0.14f, width - tableTypesWidth, height*0.86f + 2.0f);
     header->setBounds(0, 0, width, height*0.14f);
     drum->setBounds(focusArea);
     mixer->setBounds(focusArea);

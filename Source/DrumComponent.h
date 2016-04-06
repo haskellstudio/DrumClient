@@ -24,6 +24,8 @@ public:
     
     MixerComponent* mixer;
     void resized() override;
+    void paint (Graphics& g) override;
+
     int addPad(int sampleId); /// return padId
     DrumPadComponent* getPadByPadId(int padId);
     void changeSampleToPadId(int sampleId, int padId);

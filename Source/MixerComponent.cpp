@@ -18,23 +18,33 @@ MixerComponent::MixerComponent(AudioEngineGuiInterface* _audioEngine)
     audioEngine = _audioEngine;
 }
 
+void MixerComponent::paint(juce::Graphics &g)
+{
+    g.fillAll(Colours::grey);
+}
+
 void MixerComponent::resized()
 {
     int padsNumber = (int)padsMixer.size();
-    float spaceBetween = 5.0f;
-    float padWidth = (getWidth() - spaceBetween * (padsNumber + 1))/padsNumber;
+    float spaceBetween = 14.0f;
+    float padWidth = (getWidth() - spaceBetween * (padsNumber + 3))/(padsNumber + 2);
     int i = 0;
     for (auto pad : padsMixer) {
-        pad->setBounds(spaceBetween*(i + 1) + padWidth*i, 0, padWidth, getHeight() - 20.0f);
+        pad->setBounds(spaceBetween*(i + 2) + padWidth*(i + 1), 0, padWidth, getHeight() - 20.0f);
         ++i;
     }
 }
 
-void MixerComponent::addPad(int padId, int sampleId)
+void MixerComponent::addPad(int _padId, int _sampleId)
 {
-    auto pad = new MixerPadComponent(padId, sampleId, this);
+    auto pad = new MixerPadComponent(_padId, _sampleId, this);
     padsMixer.push_back(pad);
     addAndMakeVisible(pad);
+}
+
+void MixerComponent::setSampleToPad(int _sampleId, int _padId)
+{
+    getPadById(_padId)->setSample(_sampleId);
 }
 
 MixerPadComponent* MixerComponent::getPadById(int padId)
