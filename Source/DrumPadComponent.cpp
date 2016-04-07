@@ -33,7 +33,6 @@ void DrumPadComponent::init(int _padId, int _sampleId, MixerComponent* _mixer, b
     padId = _padId;
     setSample(_sampleId);
     addComponentsAndInit();
-
 }
 void DrumPadComponent::init(sampleInfoS infoSample, bool _isDraggable)
 {
@@ -76,8 +75,10 @@ bool DrumPadComponent::hitTest (int x, int y)
             float dy = y - getHeight()*0.5f;
             float newX = getX() + dx*0.5f;
             float newY = getY() + dy*0.5f;
-            if (! padId || ((getWidth()*0.5f < newX && newX < (getParentComponent()->getWidth() - getWidth()*0.5f)) &&
-                (getHeight()*0.5f < newY && newY < (getParentComponent()->getHeight() - getHeight()*0.5f)))) {
+            if (! isBelongingToDrum() ||
+                        ( (0.0f < newX && newX < (getParentComponent()->getWidth() - getWidth())) &&
+                          (0.0f < newY && newY < (getParentComponent()->getHeight() - getHeight())) ))
+            {
                 setTopLeftPosition(newX, newY);
             }
         } else if (firstHitTestPoint.x == -1) {
