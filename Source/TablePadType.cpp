@@ -26,6 +26,8 @@ TablePadType::TablePadType(MixerComponent* _mixer, float _width)
     tableHeaderButton->setImages(false, true, true, image, 1.0f, Colours::transparentBlack, image, 1.0f, Colours::white, image, 1.0f, Colours::white);
     tableHeaderButton->setBounds(_width*0.1f, _width*0.1f, _width*0.8f, _width*0.6f);
     getHeader().addAndMakeVisible(tableHeaderButton);
+    
+    NotificationCentre::getInstance()->addObserverOfDrumPad(this, kDrumWasReleased);
 }
 
 void TablePadType::drumPadWasClicked(DrumPadComponent* sender)
@@ -57,21 +59,34 @@ void TablePadType::buttonClicked(Button* button)
 void TablePadType::drumPadWasTouchedDown(DrumPadComponent* sender)
 {}
 
+void TablePadType::drumPadWasReleasedIn(Point<int> position, int sampleId)
+{
+    updateContent();
+}
+
 int TablePadType::getNumRows()
 {
-    if (isShowingCategories)    return kNumberOfCategories;
+    if (isShowingCategories)    return kNumberOfPadTypes;
     else                        return (int)subCategory.size();
 }
 
 Component* TablePadType::refreshComponentForRow(int rowNumber, bool isRowSelected, juce::Component *existingComponentToUpdate)
 {
     DrumPadComponent* cell;
-    if (existingComponentToUpdate && !((DrumPadComponent*)existingComponentToUpdate)->isBeingDragged()) {
-        cell = (DrumPadComponent*)existingComponentToUpdate;
-        if (isShowingCategories) {
-            cell->init(SampleInfo::getInstance()->getInfoForCategory(PadType(rowNumber + 1)), false);
+    if (existingComponentToUpdate) {
+        if (((DrumPadComponent*)existingComponentToUpdate)->isBeingDragged()) {
+            existingComponentToUpdate->getParentComponent()->removeChildComponent(existingComponentToUpdate);
+            delete existingComponentToUpdate;
+            cell = new DrumPadComponent(0, subCategory[rowNumber].sampleId, mixer, true);
+            cell->addListener(this);
         } else {
-            cell->init(0, subCategory[rowNumber].sampleId, mixer, true);
+            cell = (DrumPadComponent*)existingComponentToUpdate;
+            if (isShowingCategories) {
+                cell->init(SampleInfo::getInstance()->getInfoForCategory(PadType(rowNumber + 1)), false);
+            } else {
+                cell->init(0, subCategory[rowNumber].sampleId, mixer, true);
+            }
+            
         }
     } else {
         if (isShowingCategories) {

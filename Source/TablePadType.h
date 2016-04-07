@@ -13,26 +13,37 @@
 
 #include "DrumPadComponent.h"
 #include "SampleInfo.h"
+#include "NotificationCentre.h"
 
 class MixerComponent;
 
 class TablePadType : public TableListBox,
                      public TableListBoxModel,
                      public DrumPadComponent::Listener,
-                     public Button::Listener
+                     public Button::Listener,
+                     public NotificationCentre::ObserverDrumPad
 
 {
 public:
     TablePadType(MixerComponent* _mixer, float _width);
     ~TablePadType();
+    
+    ////        TableListBoxModel               overrides
     int getNumRows() override;
     void paintRowBackground(Graphics&, int rowNumber, int width, int height, bool rowIsSelected) override {};
     void paintCell(Graphics& g, int rowNumber, int columnId, int width, int height, bool rowIsSelected) override {};
     Component* refreshComponentForRow (int rowNumber, bool isRowSelected, Component* existingComponentToUpdate) override;
+    
+    ////        DrumPadComponent::Listener      overrides
     void drumPadWasClicked(DrumPadComponent* sender) override;
     void drumPadWasTouchedDown(DrumPadComponent* sender) override;
+
+    ////        Button::Listener                overrides           (tableHeaderButton)
     void buttonClicked(Button*) override;
-    
+
+    ////   NotificationCentre::ObserverDrumPad      overrides
+    void drumPadWasReleasedIn(Point<int> position, int sampleId) override;
+
 private:
     MixerComponent* mixer;
     bool isShowingCategories = true;

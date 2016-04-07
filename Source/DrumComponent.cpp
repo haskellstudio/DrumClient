@@ -12,6 +12,7 @@
 #include "DrumPadComponent.h"
 #include "AudioEngineGuiInterface.h"
 #include "MixerComponent.h"
+#include "SampleInfo.h"
 
 #define         kMaxNumberOfPads     10
 
@@ -22,6 +23,8 @@ DrumComponent::DrumComponent(MixerComponent* _mixer)
     for (int i = 0; i < kMaxNumberOfPads; ++i) {
         addPad(3*(i + 1));
     }
+
+    NotificationCentre::getInstance()->addObserverOfDrumPad(this, kDrumWasReleased);
 }
 
 void DrumComponent::paint(juce::Graphics &g)
@@ -43,6 +46,14 @@ void DrumComponent::resized()
             i = 0;
         }
     }
+}
+
+void DrumComponent::drumPadWasReleasedIn(Point<int> position, int sampleId)
+{
+    Point<int> convertedPosition = position - getPosition();
+    for (auto pad :padsDrum)
+        if (pad->getBounds().contains(convertedPosition))
+            pad->setSample(sampleId);
 }
 
 void DrumComponent::changeSampleToPadId(int sampleId, int padId)

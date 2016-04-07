@@ -20,7 +20,7 @@ MixerPadComponent::MixerPadComponent(int _padId, int _sampleId, MixerComponent* 
     mixer = _mixer;
     padId = _padId;
     setSample(_sampleId);
-    addAndMakeVisible (volumeSlider);
+    addAndMakeVisible (volumeSlider, 100);
     volumeSlider.setRange (0.0, 100.0);
     volumeSlider.addListener (this);
     volumeSlider.setSliderStyle(Slider::SliderStyle::LinearVertical);

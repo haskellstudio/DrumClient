@@ -28,7 +28,7 @@ SampleInfo::SampleInfo()
         info.image = getImageByCategory(info.type);
         samples.insert(make_pair(sampleId, info));
     }
-    for (int i = 0; i < kNumberOfCategories; ++i) {
+    for (int i = 0; i < kNumberOfPadTypes; ++i) {
         sampleInfoS info;
         int sampleId = i + 1;
         info.sampleId = 0;

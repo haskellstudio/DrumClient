@@ -12,11 +12,13 @@
 #define DRUMCOMPONENT_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "NotificationCentre.h"
 
 class DrumPadComponent;
 class MixerComponent;
 
-class DrumComponent : public Component
+class DrumComponent : public Component,
+                      public NotificationCentre::ObserverDrumPad
 {
 public:
     DrumComponent(MixerComponent* _mixer);
@@ -33,6 +35,9 @@ public:
     DrumPadComponent* getPadByPadId(int padId);
     void changeSampleToPadId(int sampleId, int padId);
     void playSound(int padId);
+    
+    ////   NotificationCentre::ObserverDrumPad      overrides
+    void drumPadWasReleasedIn(Point<int> position, int sampleId) override;
 
 
 private:

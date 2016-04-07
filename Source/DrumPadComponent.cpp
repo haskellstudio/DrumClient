@@ -10,6 +10,7 @@
 
 #include "DrumPadComponent.h"
 #include "MixerComponent.h"
+#include "NotificationCentre.h"
 
 DrumPadComponent::~DrumPadComponent(){}
 DrumPadComponent::DrumPadComponent(int _padId, int _sampleId, MixerComponent* _mixer, bool _isDraggable)
@@ -73,8 +74,8 @@ bool DrumPadComponent::hitTest (int x, int y)
         if (isDragging) {
             float dx = x - getWidth()*0.5f;
             float dy = y - getHeight()*0.5f;
-            float newX = getX() + dx*0.5f;
-            float newY = getY() + dy*0.5f;
+            float newX = getX() + dx*0.74f;
+            float newY = getY() + dy*0.74f;
             if (! isBelongingToDrum() ||
                         ( (0.0f < newX && newX < (getParentComponent()->getWidth() - getWidth())) &&
                           (0.0f < newY && newY < (getParentComponent()->getHeight() - getHeight())) ))
@@ -90,8 +91,8 @@ bool DrumPadComponent::hitTest (int x, int y)
             float distCenterX = x - getWidth()*0.5f;
             float distCenterY = y - getHeight()*0.5f;
             float distFromFirstPoint = sqrt(dx*dx + dy*dy);
-            if (distFromFirstPoint > getWidth()*0.3f ||  (distFromFirstPoint > getWidth()*0.15f &&
-                                                          (abs(distCenterX) > getWidth()*0.47f || abs(distCenterY) > getHeight()*0.48f))) {
+            if (distFromFirstPoint > getWidth()*0.2f ||  (distFromFirstPoint > getWidth()*0.1f &&
+                                                          (sqrt(distCenterX*distCenterX + distCenterY*distCenterY) < min(getWidth(), getHeight())*0.45f))) {
                 startDragging();
             }
         }
@@ -124,7 +125,6 @@ void DrumPadComponent::buttonStateChanged(Button* button)
 
 void DrumPadComponent::stopDragging()
 {
-    isDragging = false;
     Image image = padButton.getNormalImage();
     padButton.setImages(false, true, true, image, 1.0f, Colours::transparentBlack, image, 1.0f,
                         Colours::white, image, 1.0f, Colours::white);
@@ -137,8 +137,10 @@ void DrumPadComponent::stopDragging()
         auto parent = getParentComponent();
         parent->removeChildComponent(this);
         parent->addAndMakeVisible(this, 0);
+        isDragging = false;
+    } else {
+        NotificationCentre::getInstance()->sendNotificationForDrumPad(kDrumWasReleased, getPosition() + Point<int>(getWidth()*0.5f, getHeight()*0.5f), sampleId);
     }
-
 }
 
 void DrumPadComponent::startDragging()

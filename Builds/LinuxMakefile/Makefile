@@ -49,6 +49,7 @@ ifeq ($(CONFIG),Release)
 endif
 
 OBJECTS := \
+  $(OBJDIR)/NotificationCentre_aadd652f.o \
   $(OBJDIR)/TablePadType_ce4103c8.o \
   $(OBJDIR)/SampleInfo_93f88301.o \
   $(OBJDIR)/FakeAudioEngine_5f40be04.o \
@@ -90,6 +91,11 @@ clean:
 strip:
 	@echo Stripping DrumClient
 	-@strip --strip-unneeded $(OUTDIR)/$(TARGET)
+
+$(OBJDIR)/NotificationCentre_aadd652f.o: ../../Source/NotificationCentre.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling NotificationCentre.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/TablePadType_ce4103c8.o: ../../Source/TablePadType.cpp
 	-@mkdir -p $(OBJDIR)

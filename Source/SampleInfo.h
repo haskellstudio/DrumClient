@@ -14,18 +14,20 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include <map>
 
-#define         kNumberOfCategories             (3)
+#define         kNumberOfPadTypes             (3)
 
 using namespace std;
 
-enum PadType {
+enum PadType
+{
     None = 0,
     HiHat = 1,
     Tom = 2,
     Snare = 3
 };
 
-struct sampleInfoS {
+struct sampleInfoS
+{
     String name = "";
     Image image;
     PadType type = PadType::None;
@@ -37,14 +39,14 @@ class SampleInfo
 public:
     SampleInfo();
     ~SampleInfo();
+    static SampleInfo* getInstance();
     
     String getNameForSampleId(int sampleId);
     sampleInfoS getInfoForSampleId(int sampleId);
     sampleInfoS getInfoForCategory(PadType categoryType);
-    
-    static SampleInfo* getInstance();
     Image getImageBySampleId(int sampleId);
     Image getImageByCategory(PadType type);
+    
     int getNumberOfSamples() {return (int)samples.size();};
     PadType getCategoryOfSample(int sampleId);
     vector<sampleInfoS> getAllSamplesWithCategory(PadType typeCategory);

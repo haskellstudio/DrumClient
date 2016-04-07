@@ -16,6 +16,10 @@
       <FILE id="ijNVNs" name="playMixer.png" compile="0" resource="1" file="pngs/playMixer.png"/>
     </GROUP>
     <GROUP id="{10200265-DB60-C87E-AE4B-4910F085FD9E}" name="Source">
+      <FILE id="huLf3n" name="NotificationCentre.cpp" compile="1" resource="0"
+            file="Source/NotificationCentre.cpp"/>
+      <FILE id="txyv8w" name="NotificationCentre.h" compile="0" resource="0"
+            file="Source/NotificationCentre.h"/>
       <FILE id="b7ekfe" name="TablePadType.cpp" compile="1" resource="0"
             file="Source/TablePadType.cpp"/>
       <FILE id="slCriI" name="TablePadType.h" compile="0" resource="0" file="Source/TablePadType.h"/>
