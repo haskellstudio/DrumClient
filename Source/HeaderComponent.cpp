@@ -47,7 +47,6 @@ void HeaderComponent::paint(juce::Graphics &g)
     g.fillAll(Colours::darkgrey);
 }
 
-
 void HeaderComponent::resized()
 {
     Rectangle<int> bounds = getLocalBounds();

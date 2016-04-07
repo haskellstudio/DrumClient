@@ -48,6 +48,7 @@ public:
     bool isCategoryItem() {return ! sampleId;}
     int getPadId() {return padId;};
     int getSampleId() {return sampleId;};
+    String getSampleName() {return sampleLabel->getText();};
     PadType getCategoryType() {return typeCategory;};
     void setSample(int _sampleId);
 

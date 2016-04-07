@@ -18,27 +18,26 @@ class DrumPadComponent;
 class MixerComponent;
 
 class DrumComponent : public Component,
-                      public NotificationCentre::ObserverDrumPad
+                      public NotificationCentre::ObserverDrumKit
 {
 public:
     DrumComponent(MixerComponent* _mixer);
     ~DrumComponent();
     
-
-    /// Component Overrides
-    void resized() override;
-//    bool hitTest (int x, int y) override;
-    void paint (Graphics& g) override;
-
-    
     int addPad(int sampleId); /// return padId
     DrumPadComponent* getPadByPadId(int padId);
     void changeSampleToPadId(int sampleId, int padId);
     void playSound(int padId);
+
+    /// Component Overrides
+    void resized() override;
+    void paint (Graphics& g) override;
     
     ////   NotificationCentre::ObserverDrumPad      overrides
     void drumPadWasReleasedIn(Point<int> position, int sampleId) override;
 
+    ////   NotificationCentre::ObserverDrumKit      overrides
+    void setDrumKit(String& drumKitName) override;
 
 private:
     std::vector<DrumPadComponent*> padsDrum;

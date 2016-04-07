@@ -293,6 +293,7 @@
 		42EC294F66E6981BA5E03F2A /* juce_android_OpenSL.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_android_OpenSL.cpp; path = "../../../juce-grapefruit-osx/modules/juce_audio_devices/native/juce_android_OpenSL.cpp"; sourceTree = SOURCE_ROOT; };
 		433FEBBB55050E5992B980B4 /* juce_VSTPluginFormat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_VSTPluginFormat.h; path = "../../../juce-grapefruit-osx/modules/juce_audio_processors/format_types/juce_VSTPluginFormat.h"; sourceTree = SOURCE_ROOT; };
 		435901EF778B7AF1E9ED9F5A /* juce_LowLevelGraphicsPostScriptRenderer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_LowLevelGraphicsPostScriptRenderer.cpp; path = "../../../juce-grapefruit-osx/modules/juce_graphics/contexts/juce_LowLevelGraphicsPostScriptRenderer.cpp"; sourceTree = SOURCE_ROOT; };
+		436CC9E1EF47A0E6DDC665AE /* drumKick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = drumKick.png; path = ../../pngs/drum/drumKick.png; sourceTree = SOURCE_ROOT; };
 		440ADC88675DC0C521F17272 /* juce_AudioFormat.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_AudioFormat.cpp; path = "../../../juce-grapefruit-osx/modules/juce_audio_formats/format/juce_AudioFormat.cpp"; sourceTree = SOURCE_ROOT; };
 		442B388152C527C93E640FF7 /* juce_TooltipClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_TooltipClient.h; path = "../../../juce-grapefruit-osx/modules/juce_gui_basics/mouse/juce_TooltipClient.h"; sourceTree = SOURCE_ROOT; };
 		44673EF8684D57907E62FED0 /* juce_OpenGL_win32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_OpenGL_win32.h; path = "../../../juce-grapefruit-osx/modules/juce_opengl/native/juce_OpenGL_win32.h"; sourceTree = SOURCE_ROOT; };
@@ -2275,6 +2276,7 @@
 			isa = PBXGroup;
 			children = (
 				06EF547505E8F4EB2A1F36BA /* drumHiHat.png */,
+				436CC9E1EF47A0E6DDC665AE /* drumKick.png */,
 				8AB4C172B34590B1AC761213 /* drumSnare.png */,
 				7831E8E60E467939946186A6 /* drumTom.png */,
 				8DDA2EFAEA4D157A277F99AA /* headerDrum.png */,

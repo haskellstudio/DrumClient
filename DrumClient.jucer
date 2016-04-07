@@ -6,6 +6,7 @@
   <MAINGROUP id="JYCcjQ" name="DrumClient">
     <GROUP id="{0E509322-6EFA-71F2-5072-AB355AB5400D}" name="Assets">
       <FILE id="LsVb83" name="drumHiHat.png" compile="0" resource="1" file="pngs/drum/drumHiHat.png"/>
+      <FILE id="AcIdCu" name="drumKick.png" compile="0" resource="1" file="pngs/drum/drumKick.png"/>
       <FILE id="qTfcZj" name="drumSnare.png" compile="0" resource="1" file="pngs/drum/drumSnare.png"/>
       <FILE id="SvA6He" name="drumTom.png" compile="0" resource="1" file="pngs/drum/drumTom.png"/>
       <FILE id="SY5rAt" name="headerDrum.png" compile="0" resource="1" file="pngs/header/headerDrum.png"/>

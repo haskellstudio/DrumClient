@@ -12,6 +12,9 @@ namespace BinaryData
     extern const char*   drumHiHat_png;
     const int            drumHiHat_pngSize = 1812;
 
+    extern const char*   drumKick_png;
+    const int            drumKick_pngSize = 2591;
+
     extern const char*   drumSnare_png;
     const int            drumSnare_pngSize = 10894;
 
@@ -37,7 +40,7 @@ namespace BinaryData
     extern const char* namedResourceList[];
 
     // Number of elements in the namedResourceList array.
-    const int namedResourceListSize = 8;
+    const int namedResourceListSize = 9;
 
     // If you provide the name of one of the binary resource variables above, this function will
     // return the corresponding data and its size (or a null pointer if the name isn't found).

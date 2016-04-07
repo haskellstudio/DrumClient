@@ -31,7 +31,7 @@ MainContentComponent::MainContentComponent()
     addChildComponent(mixer);
     mixer->setVisible(false);
     
-    tableTypes = new TablePadType(mixer, screenSize.getWidth()*0.125f);
+    tableTypes = new TablePadType(mixer, screenSize.getWidth()*0.125f, true);
     addAndMakeVisible(tableTypes);
     
     setSize (screenSize.getWidth(), screenSize.getHeight());
@@ -52,9 +52,24 @@ void MainContentComponent::resized()
 
 void MainContentComponent::headerChanged(HeaderComponent::HeaderButtons headerButton)
 {
-    drum->setVisible(HeaderComponent::HeaderButtons::DRUM == headerButton);
+    drum->setVisible(HeaderComponent::HeaderButtons::DRUM == headerButton || HeaderComponent::HeaderButtons::SETTINGS == headerButton);
     mixer->setVisible(HeaderComponent::HeaderButtons::MIXER == headerButton);
-//    settings->setVisible(HeaderComponent::HeaderButtons::SETTINGS == headerButton);
+    switch (headerButton) {
+        case HeaderComponent::HeaderButtons::DRUM:
+            tableTypes->setEnabled(true);
+            tableTypes->setIsShowingDrumKits(true);
+            break;
+        case HeaderComponent::HeaderButtons::MIXER:
+            tableTypes->setEnabled(false);
+            break;
+        case HeaderComponent::HeaderButtons::SETTINGS:
+            tableTypes->setEnabled(true);
+            tableTypes->setIsShowingDrumKits(false);
+            break;
+            
+        default:
+            break;
+    }
 }
 
 

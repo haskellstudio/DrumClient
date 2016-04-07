@@ -25,8 +25,10 @@ class TablePadType : public TableListBox,
 
 {
 public:
-    TablePadType(MixerComponent* _mixer, float _width);
+    TablePadType(MixerComponent* _mixer, float _width, bool _isShowingDrumKits);
     ~TablePadType();
+    
+    void setIsShowingDrumKits(bool _isShowingDrumKits);
     
     ////        TableListBoxModel               overrides
     int getNumRows() override;
@@ -47,9 +49,11 @@ public:
 private:
     MixerComponent* mixer;
     bool isShowingCategories = true;
+    bool isShowingDrumKits;
     PadType typeShowing = PadType::None;
     vector<sampleInfoS> subCategory;
     ImageButton* tableHeaderButton;
+    vector<String> drumKitNames;
 };
 
 

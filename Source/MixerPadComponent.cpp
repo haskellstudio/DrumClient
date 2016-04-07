@@ -22,6 +22,7 @@ MixerPadComponent::MixerPadComponent(int _padId, int _sampleId, MixerComponent* 
     setSample(_sampleId);
     addAndMakeVisible (volumeSlider, 100);
     volumeSlider.setRange (0.0, 100.0);
+    volumeSlider.setValue(50.0f);
     volumeSlider.addListener (this);
     volumeSlider.setSliderStyle(Slider::SliderStyle::LinearVertical);
     volumeSlider.setTextBoxStyle(Slider::NoTextBox, true, 0, 0);

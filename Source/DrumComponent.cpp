@@ -14,8 +14,6 @@
 #include "MixerComponent.h"
 #include "SampleInfo.h"
 
-#define         kMaxNumberOfPads     10
-
 DrumComponent::~DrumComponent(){}
 DrumComponent::DrumComponent(MixerComponent* _mixer)
 {
@@ -24,7 +22,8 @@ DrumComponent::DrumComponent(MixerComponent* _mixer)
         addPad(3*(i + 1));
     }
 
-    NotificationCentre::getInstance()->addObserverOfDrumPad(this, kDrumWasReleased);
+    NotificationCentre::getInstance()->addObserver(this, kDrumWasReleased);
+    NotificationCentre::getInstance()->addObserver(this, kDrumKitHasChanged);
 }
 
 void DrumComponent::paint(juce::Graphics &g)
@@ -48,12 +47,24 @@ void DrumComponent::resized()
     }
 }
 
+void DrumComponent::setDrumKit(String& drumKitName)
+{
+    auto drumKit = SampleInfo::getInstance()->getDrumKitByName(drumKitName);
+    int i = 0;
+    for (auto sample : drumKit) {
+        changeSampleToPadId(sample, padsDrum[i++]->getPadId());
+    }
+}
+
 void DrumComponent::drumPadWasReleasedIn(Point<int> position, int sampleId)
 {
     Point<int> convertedPosition = position - getPosition();
-    for (auto pad :padsDrum)
-        if (pad->getBounds().contains(convertedPosition))
+    for (auto pad :padsDrum) {
+        if (pad->getBounds().contains(convertedPosition)) {
             pad->setSample(sampleId);
+            mixer->setSampleToPad(sampleId, pad->getPadId());
+        }
+    }
 }
 
 void DrumComponent::changeSampleToPadId(int sampleId, int padId)

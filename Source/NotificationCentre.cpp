@@ -23,15 +23,15 @@ NotificationCentre* NotificationCentre::getInstance()
     return sharedInstance;
 }
 
-void NotificationCentre::addObserverOfDrumPad(ObserverDrumPad *observer, const String& notificationKey)
+void NotificationCentre::addObserver(Observer *observer, const String& notificationKey)
 {
-    observersDrumPad[notificationKey].push_back(observer);
+    observers[notificationKey].push_back(observer);
 }
 
-void NotificationCentre::removeObserverOfDrumPad(ObserverDrumPad *observer, const String& notificationKey)
+void NotificationCentre::removeObserver(Observer *observer, const String& notificationKey)
 {
-    auto pairWithKey = observersDrumPad.find(notificationKey);
-    if (pairWithKey != observersDrumPad.end()) {
+    auto pairWithKey = observers.find(notificationKey);
+    if (pairWithKey != observers.end()) {
         auto observersWithKey = pairWithKey->second;
         auto observerIterator = find(observersWithKey.begin(), observersWithKey.end(), observer);
         if (observersWithKey.end() != observerIterator) {
@@ -42,10 +42,18 @@ void NotificationCentre::removeObserverOfDrumPad(ObserverDrumPad *observer, cons
 
 void NotificationCentre::sendNotificationForDrumPad(const String& notificationKey, Point<int> position, int sampleId)
 {
-    auto pairWithKey = observersDrumPad.find(notificationKey);
-    if (pairWithKey != observersDrumPad.end()) {
-        for (auto observerOfDrumPads : pairWithKey->second) {
-            observerOfDrumPads->drumPadWasReleasedIn(position, sampleId);
-        }
-    }
+    auto pairWithKey = observers.find(notificationKey);
+    if (pairWithKey != observers.end())
+        for (auto observerOfDrumPads : pairWithKey->second)
+            ((ObserverDrumPad*)observerOfDrumPads)->drumPadWasReleasedIn(position, sampleId);
+    
 }
+void NotificationCentre::sendNotificationForDrumKit(const String& notificationKey, String drumKitName)
+{
+    auto pairWithKey = observers.find(notificationKey);
+    if (pairWithKey != observers.end())
+        for (auto observerOfDrumKit : pairWithKey->second)
+            ((ObserverDrumKit*)observerOfDrumKit)->setDrumKit(drumKitName);
+
+}
+
