@@ -24,11 +24,6 @@ public:
     DrumComponent(MixerComponent* _mixer);
     ~DrumComponent();
     
-    int addPad(int sampleId); /// return padId
-    DrumPadComponent* getPadByPadId(int padId);
-    void changeSampleToPadId(int sampleId, int padId);
-    void playSound(int padId);
-
     /// Component Overrides
     void resized() override;
     void paint (Graphics& g) override;
@@ -42,6 +37,11 @@ public:
 private:
     std::vector<DrumPadComponent*> padsDrum;
     MixerComponent* mixer;
+    
+    int addPad(int sampleId); /// return padId
+    DrumPadComponent* getPadByPadId(int padId);
+    void changeSampleToPadId(int sampleId, int padId);
+    void changeSampleToPad(int sampleId, DrumPadComponent* pad);
 };
 
 #endif  // DRUMCOMPONENT_H_INCLUDED

@@ -128,10 +128,7 @@ void DrumPadComponent::stopDragging()
     Image image = padButton.getNormalImage();
     padButton.setImages(false, true, true, image, 1.0f, Colours::transparentBlack, image, 1.0f,
                         Colours::white, image, 1.0f, Colours::white);
-    //        if (Component* newParentComponent = getComponentAt(getWidth()*0.5f, getHeight()*0.5f)) {
-    //            setTopLeftPosition(getPosition().x - newParentComponent->getPosition().x, getPosition().y - newParentComponent->getPosition().y);
-    //            newParentComponent->addAndMakeVisible(this);
-    //        }
+    
     if (isBelongingToDrum())
     {
         auto parent = getParentComponent();

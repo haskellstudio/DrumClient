@@ -51,28 +51,30 @@ void DrumComponent::setDrumKit(String& drumKitName)
 {
     auto drumKit = SampleInfo::getInstance()->getDrumKitByName(drumKitName);
     int i = 0;
-    for (auto sample : drumKit) {
-        changeSampleToPadId(sample, padsDrum[i++]->getPadId());
-    }
+    
+    for (auto sample : drumKit)
+        changeSampleToPad(sample, padsDrum[i++]);
 }
 
 void DrumComponent::drumPadWasReleasedIn(Point<int> position, int sampleId)
 {
     Point<int> convertedPosition = position - getPosition();
-    for (auto pad :padsDrum) {
-        if (pad->getBounds().contains(convertedPosition)) {
-            pad->setSample(sampleId);
-            mixer->setSampleToPad(sampleId, pad->getPadId());
-        }
-    }
+
+    for (auto pad :padsDrum)
+        if (pad->getBounds().contains(convertedPosition))
+            changeSampleToPad(sampleId, pad);
+}
+
+void DrumComponent::changeSampleToPad(int sampleId, DrumPadComponent *pad)
+{
+    pad->setSample(sampleId);
+    mixer->setSampleToPad(sampleId, pad->getPadId());
 }
 
 void DrumComponent::changeSampleToPadId(int sampleId, int padId)
 {
-    if (DrumPadComponent* pad = getPadByPadId(padId)) {
-        pad->setSample(sampleId);
-        mixer->setSampleToPad(sampleId, padId);
-    }
+    if (DrumPadComponent* pad = getPadByPadId(padId))
+        changeSampleToPad(sampleId, pad);
 }
 DrumPadComponent* DrumComponent::getPadByPadId(int padId)
 {

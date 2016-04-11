@@ -29,7 +29,6 @@ public:
     void init(int _padId, int _sampleId, MixerComponent* _mixer, bool _isDraggable);
     void init(sampleInfoS infoSample, bool _isDraggable);
     
-    void addComponentsAndInit();;
     
     /// Component Overrides
     void resized() override;
@@ -43,13 +42,13 @@ public:
 //    void mouseDrag (const MouseEvent& event) override;
 
     //// Accessors
-    bool isBeingDragged() {return isDragging;};
-    bool isBelongingToDrum() {return padId;};
-    bool isCategoryItem() {return ! sampleId;}
-    int getPadId() {return padId;};
-    int getSampleId() {return sampleId;};
-    String getSampleName() {return sampleLabel->getText();};
-    PadType getCategoryType() {return typeCategory;};
+    inline bool isBeingDragged() {return isDragging;};
+    inline bool isBelongingToDrum() {return padId;};
+    inline bool isCategoryItem() {return ! sampleId;}
+    inline int getPadId() {return padId;};
+    inline int getSampleId() {return sampleId;};
+    inline String getSampleName() {return sampleLabel->getText();};
+    inline PadType getCategoryType() {return typeCategory;};
     void setSample(int _sampleId);
 
     
@@ -77,6 +76,9 @@ private:
     MixerComponent* mixer;
     Label* sampleLabel;
     PadType typeCategory;
+    
+    void addComponentsAndInit();;
+
 };
 
 

@@ -37,11 +37,6 @@ HeaderComponent::HeaderComponent()
     addAndMakeVisible(logo);
 }
 
-void HeaderComponent::addHeaderListener(HeaderListener* _listener)
-{
-    listener = _listener;
-}
-
 void HeaderComponent::paint(juce::Graphics &g)
 {
     g.fillAll(Colours::darkgrey);

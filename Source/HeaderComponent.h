@@ -25,7 +25,7 @@ public:
     
     HeaderListener* listener = nullptr;
     
-    void addHeaderListener(HeaderListener* _listener);
+    void addHeaderListener(HeaderListener* _listener) {listener = _listener;};
     void buttonClicked(Button* button) override;
     void resized() override;
     void paint(juce::Graphics &g) override;

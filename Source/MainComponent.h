@@ -30,7 +30,12 @@ public:
     //==============================================================================
     MainContentComponent();
     ~MainContentComponent();
+    
+    ////        Component               overrides
     void resized() override;
+    void paint (Graphics& g) override;
+
+    ////        HeaderListener          overrides
     void headerChanged(HeaderComponent::HeaderButtons headerButton) override;
     
 
@@ -40,6 +45,12 @@ private:
     MixerComponent* mixer;
     TablePadType* tableTypes;
     AudioEngineGuiInterface* audioEngine;
+    std::vector<Component*> focusViews;
+    
+    bool isShowingSideTable = false;
+    void showSideTable(bool isDrumKit);
+    void hideSideTable();
+    void showFocusView(HeaderComponent::HeaderButtons viewButtonPressed);
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MainContentComponent)
 };
