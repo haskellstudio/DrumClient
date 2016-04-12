@@ -31,7 +31,13 @@ HeaderComponent::HeaderComponent()
     settingsButton.setEnabled(true);
     settingsButton.setImages(false, true, true, image, 1.0f, Colours::transparentBlack, image, 1.0f, Colours::white, image, 1.0f, Colours::white);
     addAndMakeVisible(settingsButton);
-    
+
+    image = ImageCache::getFromMemory (BinaryData::headerMetronome_png, BinaryData::headerMetronome_pngSize);
+    metronomeButton.addListener(this);
+    metronomeButton.setEnabled(true);
+    metronomeButton.setImages(false, true, true, image, 1.0f, Colours::transparentBlack, image, 1.0f, Colours::white, image, 1.0f, Colours::white);
+    addAndMakeVisible(metronomeButton);
+
     image = ImageCache::getFromMemory (BinaryData::headerLogo_png, BinaryData::headerLogo_pngSize);
     logo.setImage(image, RectanglePlacement::Flags::centred);
     addAndMakeVisible(logo);
@@ -46,11 +52,12 @@ void HeaderComponent::resized()
 {
     Rectangle<int> bounds = getLocalBounds();
     float headerWidth = bounds.getWidth();
-    float buttonWidth = headerWidth/6.0f;
+    float buttonWidth = headerWidth/8.0f;
     float headerHeight = bounds.getHeight();
     drumButton.setBounds(0.0f, headerHeight*0.1f, buttonWidth, headerHeight*0.8f);
     mixerButton.setBounds(buttonWidth, headerHeight*0.1f, buttonWidth, headerHeight*0.8f);
     settingsButton.setBounds(2.0f*buttonWidth, headerHeight*0.1f, buttonWidth, headerHeight*0.8f);
+    metronomeButton.setBounds(3.0f*buttonWidth, headerHeight*0.1f, buttonWidth, headerHeight*0.8f);
     logo.setBounds(headerWidth*0.5f, 0, headerWidth*0.5f, headerHeight);
 }
 
@@ -63,6 +70,13 @@ void HeaderComponent::buttonClicked(juce::Button *button)
             listener->headerChanged(HeaderButtons::MIXER);
         } else if (button == &settingsButton) {
             listener->headerChanged(HeaderButtons::SETTINGS);
+        } else if (button == &metronomeButton) {
+            listener->headerChanged(HeaderButtons::METRONOME);
         }
     }
 }
+
+
+
+
+

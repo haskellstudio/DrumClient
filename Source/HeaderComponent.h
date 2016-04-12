@@ -33,13 +33,15 @@ public:
     enum HeaderButtons {
         DRUM,
         MIXER,
-        SETTINGS
+        SETTINGS,
+        METRONOME
     };
 
 private:
     ImageButton drumButton;
     ImageButton mixerButton;
     ImageButton settingsButton;
+    ImageButton metronomeButton;
     ImageComponent logo;
 };
 

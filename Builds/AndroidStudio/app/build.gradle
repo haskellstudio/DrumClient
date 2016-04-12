@@ -50,6 +50,7 @@ model {
         cppFlags += "-I${ext.juceModuleDir}".toString()
         cppFlags += "-I/Users/MacFra/Juce_Proj-Res/DrumClient/pngs/drum".toString()
         cppFlags += "-I/Users/MacFra/Juce_Proj-Res/DrumClient/pngs/header".toString()
+        cppFlags += "-I/Users/MacFra/Juce_Proj-Res/DrumClient/../../Downloads".toString()
         cppFlags += "-I/Users/MacFra/Juce_Proj-Res/DrumClient/pngs".toString()
         cppFlags += "-I/Users/MacFra/Juce_Proj-Res/DrumClient/Source".toString()
         cppFlags += "-I/Users/MacFra/Juce_Proj-Res/DrumClient/../juce-grapefruit-osx/modules/juce_audio_basics/buffers".toString()

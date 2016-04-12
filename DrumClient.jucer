@@ -14,9 +14,19 @@
       <FILE id="EtqQwe" name="headerMixer.png" compile="0" resource="1" file="pngs/header/headerMixer.png"/>
       <FILE id="CUK8id" name="headerSettings.png" compile="0" resource="1"
             file="pngs/header/headerSettings.png"/>
+      <FILE id="y6WtDA" name="headerMetronome.png" compile="0" resource="1"
+            file="../../Downloads/headerMetronome.png"/>
       <FILE id="ijNVNs" name="playMixer.png" compile="0" resource="1" file="pngs/playMixer.png"/>
     </GROUP>
     <GROUP id="{10200265-DB60-C87E-AE4B-4910F085FD9E}" name="Source">
+      <FILE id="Xs1m3H" name="TappingTempoTakingComponent.cpp" compile="1"
+            resource="0" file="Source/TappingTempoTakingComponent.cpp"/>
+      <FILE id="J0BWHA" name="TappingTempoTakingComponent.h" compile="0"
+            resource="0" file="Source/TappingTempoTakingComponent.h"/>
+      <FILE id="ORnsUR" name="MetronomeComponent.cpp" compile="1" resource="0"
+            file="Source/MetronomeComponent.cpp"/>
+      <FILE id="byJfIF" name="MetronomeComponent.h" compile="0" resource="0"
+            file="Source/MetronomeComponent.h"/>
       <FILE id="huLf3n" name="NotificationCentre.cpp" compile="1" resource="0"
             file="Source/NotificationCentre.cpp"/>
       <FILE id="txyv8w" name="NotificationCentre.h" compile="0" resource="0"

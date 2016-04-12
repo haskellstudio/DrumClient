@@ -13,7 +13,7 @@
 #include "FakeAudioEngine.h"
 #include "TablePadType.h"
 #include "SampleInfo.h"
-
+#include "MetronomeComponent.h"
 
 //==============================================================================
 MainContentComponent::~MainContentComponent(){}
@@ -27,17 +27,20 @@ MainContentComponent::MainContentComponent()
     header->addHeaderListener(this);
     mixer = new MixerComponent(audioEngine);
     drum = new DrumComponent(mixer);
+    metronome = new MetronomeComponent();
     tableTypes = new TablePadType(mixer, screenSize.getWidth()*0.125f, true);
 
-    addAndMakeVisible(header, 1);
+    addAndMakeVisible(header, 2);
     addAndMakeVisible(drum, 0);
+    addAndMakeVisible(metronome, 0);
     addAndMakeVisible(mixer, 0);
     addAndMakeVisible(tableTypes, 10);
-
     mixer->setAlpha(0.0f);
+    metronome->setAlpha(0.0f);
     
     focusViews.push_back(drum);
     focusViews.push_back(mixer);
+    focusViews.push_back(metronome);
     
     setSize (screenSize.getWidth(), screenSize.getHeight());
     
@@ -58,6 +61,7 @@ void MainContentComponent::resized()
     header->setBounds(0, 0, width, height*0.14f);
     drum->setBounds(focusArea);
     mixer->setBounds(Rectangle<int>(0, focusArea.getY(), width, focusArea.getHeight()));
+    metronome->setBounds(mixer->getBounds());
     tableTypes->setBounds(-1.1f*tableTypesWidth, focusArea.getY(), tableTypesWidth, focusArea.getHeight());
 }
 
@@ -65,7 +69,7 @@ void MainContentComponent::headerChanged(HeaderComponent::HeaderButtons headerBu
 {
     showFocusView(headerButton);
     
-    if (HeaderComponent::HeaderButtons::MIXER == headerButton)
+    if (HeaderComponent::HeaderButtons::MIXER == headerButton || HeaderComponent::HeaderButtons::METRONOME == headerButton)
         hideSideTable();
     else
         showSideTable(HeaderComponent::HeaderButtons::DRUM == headerButton);
@@ -73,18 +77,26 @@ void MainContentComponent::headerChanged(HeaderComponent::HeaderButtons headerBu
 
 void MainContentComponent::showFocusView(HeaderComponent::HeaderButtons viewButtonPressed)
 {
+    float animationDuration = 350;
     for (auto view : focusViews)
         if (view->getAlpha() > 0)
-            Desktop::getInstance().getAnimator().fadeOut(view, 150);
+            Desktop::getInstance().getAnimator().fadeOut(view, animationDuration*0.3f);
     
     switch (viewButtonPressed) {
         case HeaderComponent::HeaderButtons::MIXER:
+            mixer->setAlwaysOnTop(true);
             Desktop::getInstance().getAnimator().cancelAnimation(mixer, true);
-            Desktop::getInstance().getAnimator().fadeIn(mixer, 150);
+            Desktop::getInstance().getAnimator().fadeIn(mixer, animationDuration);
+            break;
+        case HeaderComponent::HeaderButtons::METRONOME:
+            metronome->setAlwaysOnTop(true);
+            Desktop::getInstance().getAnimator().cancelAnimation(metronome, true);
+            Desktop::getInstance().getAnimator().fadeIn(metronome, animationDuration);
             break;
         default:
+            drum->setAlwaysOnTop(true);
             Desktop::getInstance().getAnimator().cancelAnimation(drum, true);
-            Desktop::getInstance().getAnimator().fadeIn(drum, 150);
+            Desktop::getInstance().getAnimator().fadeIn(drum, animationDuration);
             break;
     }
     
@@ -98,7 +110,7 @@ void MainContentComponent::showSideTable(bool isDrumKit)
         Desktop::getInstance().getAnimator().cancelAnimation(tableTypes, true);
         Desktop::getInstance().getAnimator().animateComponent(tableTypes,
                                                               Rectangle<int>(0.0f, tableTypes->getY(), tableTypes->getWidth(), tableTypes->getHeight()),
-                                                              1.0f, 200, false, 1.0f, 0.2f);
+                                                              1.0f, 300, false, 1.0f, 0.2f);
     }
     tableTypes->setIsShowingDrumKits(isDrumKit);
 }
@@ -110,7 +122,7 @@ void MainContentComponent::hideSideTable()
         Desktop::getInstance().getAnimator().cancelAnimation(tableTypes, true);
         Desktop::getInstance().getAnimator().animateComponent(tableTypes,
                                         Rectangle<int>(-1.1f*tableTypes->getWidth(), tableTypes->getY(), tableTypes->getWidth(), tableTypes->getHeight()),
-                                                              1.0f, 200, false, 1.0f, 0.2f);
+                                                              1.0f, 300, false, 1.0f, 0.2f);
     }
 }
 

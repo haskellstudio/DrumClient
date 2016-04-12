@@ -49,6 +49,8 @@ ifeq ($(CONFIG),Release)
 endif
 
 OBJECTS := \
+  $(OBJDIR)/TappingTempoTakingComponent_2f8e4d54.o \
+  $(OBJDIR)/MetronomeComponent_8aae7174.o \
   $(OBJDIR)/NotificationCentre_aadd652f.o \
   $(OBJDIR)/TablePadType_ce4103c8.o \
   $(OBJDIR)/SampleInfo_93f88301.o \
@@ -91,6 +93,16 @@ clean:
 strip:
 	@echo Stripping DrumClient
 	-@strip --strip-unneeded $(OUTDIR)/$(TARGET)
+
+$(OBJDIR)/TappingTempoTakingComponent_2f8e4d54.o: ../../Source/TappingTempoTakingComponent.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling TappingTempoTakingComponent.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+
+$(OBJDIR)/MetronomeComponent_8aae7174.o: ../../Source/MetronomeComponent.cpp
+	-@mkdir -p $(OBJDIR)
+	@echo "Compiling MetronomeComponent.cpp"
+	@$(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 
 $(OBJDIR)/NotificationCentre_aadd652f.o: ../../Source/NotificationCentre.cpp
 	-@mkdir -p $(OBJDIR)

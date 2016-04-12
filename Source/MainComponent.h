@@ -22,6 +22,7 @@ class AudioEngineGuiInterface;
 class DrumComponent;
 class MixerComponent;
 class TablePadType;
+class MetronomeComponent;
 
 class MainContentComponent   : public Component,
                                public HeaderListener
@@ -43,6 +44,7 @@ private:
     HeaderComponent* header;
     DrumComponent* drum;
     MixerComponent* mixer;
+    MetronomeComponent* metronome;
     TablePadType* tableTypes;
     AudioEngineGuiInterface* audioEngine;
     std::vector<Component*> focusViews;
