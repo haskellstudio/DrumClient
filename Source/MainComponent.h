@@ -25,7 +25,9 @@ class TablePadType;
 class MetronomeComponent;
 
 class MainContentComponent   : public Component,
-                               public HeaderListener
+                               public HeaderComponent::HeaderListener,
+                                public ChangeListener
+
 {
 public:
     //==============================================================================
@@ -38,6 +40,10 @@ public:
 
     ////        HeaderListener          overrides
     void headerChanged(HeaderComponent::HeaderButtons headerButton) override;
+    
+    
+    void changeListenerCallback (ChangeBroadcaster* source) override;
+
     
 
 private:

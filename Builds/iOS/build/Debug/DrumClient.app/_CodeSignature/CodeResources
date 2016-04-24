@@ -10,7 +10,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		JJmvQLVuveGNivbul+L1uvs+KOA=
+		T6zrMdNvWIW/vRrUp4D1upT6VQ4=
 		</data>
 		<key>LaunchImage-700-568h@2x.png</key>
 		<data>
@@ -48,37 +48,93 @@
 	<key>files2</key>
 	<dict>
 		<key>29.png</key>
-		<data>
-		fvXfH1QbOEq1AP3/ZBre00jpeQg=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			fvXfH1QbOEq1AP3/ZBre00jpeQg=
+			</data>
+			<key>hash2</key>
+			<data>
+			k7cFhz06nMDW0HvKPTy6Th+b8YodM4ETSMAagry1XWs=
+			</data>
+		</dict>
 		<key>LaunchImage-700-568h@2x.png</key>
-		<data>
-		tNPOJsnzdZyH9m99aIkUD5iX9b4=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			tNPOJsnzdZyH9m99aIkUD5iX9b4=
+			</data>
+			<key>hash2</key>
+			<data>
+			00XQI4w8bRrfUvTDEXvpM3R9MAppTU+6assAzTi+B1U=
+			</data>
+		</dict>
 		<key>LaunchImage-700-Landscape@2x~ipad.png</key>
-		<data>
-		IrDPKyzb2XV4j3h7o7tGc+sq9w8=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			IrDPKyzb2XV4j3h7o7tGc+sq9w8=
+			</data>
+			<key>hash2</key>
+			<data>
+			xBrQzYAnPPuQfHHOrwPRqST0OwE0KnZYE+8LTCn+gkI=
+			</data>
+		</dict>
 		<key>LaunchImage-700-Landscape~ipad.png</key>
-		<data>
-		Ek++JCHzAft+nczwBaIozWfZKJE=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			Ek++JCHzAft+nczwBaIozWfZKJE=
+			</data>
+			<key>hash2</key>
+			<data>
+			oSHt8M0SCropAshRyAWaSSxK7Vu2qSTqVU+7F0/ceDE=
+			</data>
+		</dict>
 		<key>LaunchImage-700-Portrait@2x~ipad.png</key>
-		<data>
-		LN+CSoDBa7Zg9HQv3rIhdFxy/rY=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			LN+CSoDBa7Zg9HQv3rIhdFxy/rY=
+			</data>
+			<key>hash2</key>
+			<data>
+			mXK4+op6V0pBRQAj7go54NFZzlw8sB/DY2EPpIJw/Do=
+			</data>
+		</dict>
 		<key>LaunchImage-700-Portrait~ipad.png</key>
-		<data>
-		pGs7Q8EUjEo9OIqK+nyRESDiMko=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			pGs7Q8EUjEo9OIqK+nyRESDiMko=
+			</data>
+			<key>hash2</key>
+			<data>
+			CWN+Kt8YKwa430CtG7pEpPqItvH5mVE5drZ/ndcfBBU=
+			</data>
+		</dict>
 		<key>LaunchImage-700@2x.png</key>
-		<data>
-		D01Lf7XgzIBHiPibx4xDinw/H5w=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			D01Lf7XgzIBHiPibx4xDinw/H5w=
+			</data>
+			<key>hash2</key>
+			<data>
+			unmTSbvH1qw+62tVZoGw/SQspI4Dz34737UI89Cx7t4=
+			</data>
+		</dict>
 		<key>embedded.mobileprovision</key>
-		<data>
-		AbXAOXlSMq6JOnfrQz4eI/8OiWY=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			AbXAOXlSMq6JOnfrQz4eI/8OiWY=
+			</data>
+			<key>hash2</key>
+			<data>
+			PXte/b9I/PcJm/qLS71AXOPwqt5co+wcVl1YaDQcIWI=
+			</data>
+		</dict>
 	</dict>
 	<key>rules</key>
 	<dict>

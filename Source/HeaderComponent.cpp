@@ -64,14 +64,18 @@ void HeaderComponent::resized()
 void HeaderComponent::buttonClicked(juce::Button *button)
 {
     if (listener) {
-        if (button == &drumButton) {
+        if (button == &drumButton && currentTab != HeaderButtons::DRUM) {
             listener->headerChanged(HeaderButtons::DRUM);
-        } else if (button == &mixerButton) {
+            currentTab = HeaderButtons::DRUM;
+        } else if (button == &mixerButton && currentTab != HeaderButtons::MIXER) {
             listener->headerChanged(HeaderButtons::MIXER);
-        } else if (button == &settingsButton) {
+            currentTab = HeaderButtons::MIXER;
+        } else if (button == &settingsButton && currentTab != HeaderButtons::SETTINGS) {
             listener->headerChanged(HeaderButtons::SETTINGS);
-        } else if (button == &metronomeButton) {
+            currentTab = HeaderButtons::SETTINGS;
+        } else if (button == &metronomeButton && currentTab != HeaderButtons::METRONOME) {
             listener->headerChanged(HeaderButtons::METRONOME);
+            currentTab = HeaderButtons::METRONOME;
         }
     }
 }

@@ -13,7 +13,6 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-class HeaderListener;
 
 class HeaderComponent : public Component,
                         public Button::Listener
@@ -22,10 +21,7 @@ class HeaderComponent : public Component,
 public:
     HeaderComponent();
     ~HeaderComponent();
-    
-    HeaderListener* listener = nullptr;
-    
-    void addHeaderListener(HeaderListener* _listener) {listener = _listener;};
+
     void buttonClicked(Button* button) override;
     void resized() override;
     void paint(juce::Graphics &g) override;
@@ -36,6 +32,16 @@ public:
         SETTINGS,
         METRONOME
     };
+    
+    class HeaderListener
+    {
+    public:
+        virtual ~HeaderListener()  {}
+        virtual void headerChanged(HeaderComponent::HeaderButtons headerButton) = 0;
+    };
+    
+    inline void addHeaderListener(HeaderListener* _listener) {listener = _listener;};
+    inline HeaderButtons getCurrentTab() {return currentTab;};
 
 private:
     ImageButton drumButton;
@@ -43,13 +49,9 @@ private:
     ImageButton settingsButton;
     ImageButton metronomeButton;
     ImageComponent logo;
+    HeaderButtons currentTab = HeaderButtons::DRUM;
+    HeaderListener* listener = nullptr;
 };
 
-class HeaderListener
-{
-public:
-    virtual ~HeaderListener()  {}
-    virtual void headerChanged(HeaderComponent::HeaderButtons headerButton) = 0;
-};
 
 #endif  // HEADERCOMPONENT_H_INCLUDED

@@ -45,6 +45,8 @@ MainContentComponent::MainContentComponent()
     setSize (screenSize.getWidth(), screenSize.getHeight());
     
     showSideTable(true);
+    Desktop::getInstance().getAnimator().addChangeListener(this);
+
 }
 
 void MainContentComponent::paint(Graphics& g)
@@ -75,8 +77,20 @@ void MainContentComponent::headerChanged(HeaderComponent::HeaderButtons headerBu
         showSideTable(HeaderComponent::HeaderButtons::DRUM == headerButton);
 }
 
+void MainContentComponent::changeListenerCallback (ChangeBroadcaster* source)
+{
+    Logger::writeToLog("I feel like something changed, but I don't know what and why!");
+}
+
+
 void MainContentComponent::showFocusView(HeaderComponent::HeaderButtons viewButtonPressed)
 {
+    if ((HeaderComponent::HeaderButtons::DRUM == viewButtonPressed || HeaderComponent::HeaderButtons::SETTINGS == viewButtonPressed) &&
+        (HeaderComponent::HeaderButtons::DRUM == header->getCurrentTab() || HeaderComponent::HeaderButtons::SETTINGS == header->getCurrentTab()))
+    {
+        return;
+    }
+    
     float animationDuration = 350;
     for (auto view : focusViews)
         if (view->getAlpha() > 0)
@@ -111,6 +125,13 @@ void MainContentComponent::showSideTable(bool isDrumKit)
         Desktop::getInstance().getAnimator().animateComponent(tableTypes,
                                                               Rectangle<int>(0.0f, tableTypes->getY(), tableTypes->getWidth(), tableTypes->getHeight()),
                                                               1.0f, 300, false, 1.0f, 0.2f);
+    } else {
+//        Desktop::getInstance().getAnimator().cancelAnimation(tableTypes, true);
+//        tableTypes->setBounds(0.0f, tableTypes->getY(), tableTypes->getWidth(), tableTypes->getHeight());
+//        Desktop::getInstance().getAnimator().animateComponent(tableTypes,
+//                                                              Rectangle<int>(0.0f, tableTypes->getY(), tableTypes->getWidth(), tableTypes->getHeight()),
+//                                                              1.0f, 300, false, 1.0f, 0.2f);
+        
     }
     tableTypes->setIsShowingDrumKits(isDrumKit);
 }
