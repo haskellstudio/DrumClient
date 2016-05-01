@@ -40,9 +40,9 @@ void SampleInfo::initFakeDrumKits()
     for (int i = 0; i < numOfFakeDrumKit; ++i) {
         vector<int> drumKit;
         for (int j = 0; j < kMaxNumberOfPads; ++j) {
-            int newSample = (arc4random() % kSampleNumber) + 1;
+            int newSample = ((11*j) % kSampleNumber) + 1;
             while (find(drumKit.begin(), drumKit.end(), newSample) != drumKit.end()) {
-                newSample = (arc4random() % kSampleNumber) + 1;
+                newSample = (((11*j)) % kSampleNumber) + 1;
             }
             drumKit.push_back(newSample);
         }
