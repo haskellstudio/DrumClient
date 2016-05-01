@@ -1,1 +1,1 @@
-/Users/MacFra/Juce_Proj-Res/juce-grapefruit-osx/modules/juce_graphics/images/juce_ImageFileFormat.h
+/Users/MacFra/Juce_Proj-Res/DrumClient/JuceLibraryCode/modules/juce_graphics/images/juce_ImageFileFormat.h

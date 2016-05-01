@@ -1,1 +1,1 @@
-/Users/MacFra/Juce_Proj-Res/juce-grapefruit-osx/modules/juce_events/interprocess/juce_ConnectedChildProcess.h
+/Users/MacFra/Juce_Proj-Res/DrumClient/JuceLibraryCode/modules/juce_events/interprocess/juce_ConnectedChildProcess.h

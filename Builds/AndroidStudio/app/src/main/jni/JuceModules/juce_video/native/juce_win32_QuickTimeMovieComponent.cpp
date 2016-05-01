@@ -1,1 +1,1 @@
-/Users/MacFra/Juce_Proj-Res/juce-grapefruit-osx/modules/juce_video/native/juce_win32_QuickTimeMovieComponent.cpp
+/Users/MacFra/Juce_Proj-Res/DrumClient/JuceLibraryCode/modules/juce_video/native/juce_win32_QuickTimeMovieComponent.cpp

@@ -1,1 +1,1 @@
-/Users/MacFra/Juce_Proj-Res/juce-grapefruit-osx/modules/juce_audio_processors/scanning/juce_KnownPluginList.cpp
+/Users/MacFra/Juce_Proj-Res/DrumClient/JuceLibraryCode/modules/juce_audio_processors/scanning/juce_KnownPluginList.cpp

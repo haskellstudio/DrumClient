@@ -1,1 +1,1 @@
-/Users/MacFra/Juce_Proj-Res/juce-grapefruit-osx/modules/juce_audio_processors/format_types/juce_VSTPluginFormat.h
+/Users/MacFra/Juce_Proj-Res/DrumClient/JuceLibraryCode/modules/juce_audio_processors/format_types/juce_VSTPluginFormat.h

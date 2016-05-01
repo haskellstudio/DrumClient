@@ -1,1 +1,1 @@
-/Users/MacFra/Juce_Proj-Res/juce-grapefruit-osx/modules/juce_graphics/native/juce_mac_CoreGraphicsContext.h
+/Users/MacFra/Juce_Proj-Res/DrumClient/JuceLibraryCode/modules/juce_graphics/native/juce_mac_CoreGraphicsContext.h

@@ -1,1 +1,1 @@
-/Users/MacFra/Juce_Proj-Res/juce-grapefruit-osx/modules/juce_core/text/juce_CharPointer_ASCII.h
+/Users/MacFra/Juce_Proj-Res/DrumClient/JuceLibraryCode/modules/juce_core/text/juce_CharPointer_ASCII.h

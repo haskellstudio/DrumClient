@@ -1,1 +1,1 @@
-/Users/MacFra/Juce_Proj-Res/juce-grapefruit-osx/modules/juce_audio_devices/audio_io/juce_AudioDeviceManager.h
+/Users/MacFra/Juce_Proj-Res/DrumClient/JuceLibraryCode/modules/juce_audio_devices/audio_io/juce_AudioDeviceManager.h
